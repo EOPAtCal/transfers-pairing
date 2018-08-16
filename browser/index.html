@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Google Sheets Matching</title>
+    <meta charset="utf-8" />
+  </head>
+
+  <body>
+    <p>Google Sheets Matching</p>
+
+    <!--Add buttons to initiate auth sequence and sign out-->
+    <button id="authorize_button" style="display: none;">Authorize</button>
+    <button id="signout_button" style="display: none;">Sign Out</button>
+
+    <pre id="content"></pre>
+
+    <script type="text/javascript">
+      // Client ID and API key from the Developer Console
+      var CLIENT_ID = '189506913922-3lr5j6kj5gr173gh59uh6sm6476mir21.apps.googleusercontent.com';
+      var API_KEY = 'AIzaSyCjs7WRa3HA1YxFfKCwod-b7pl9WZvFP8o';
+      // Array of API discovery doc URLs for APIs used by the quickstart
+      var DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"];
+      // Authorization scopes required by the API; multiple scopes can be
+      // included, separated by spaces.
+      var SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
+      var authorizeButton = document.getElementById('authorize_button');
+      var signoutButton = document.getElementById('signout_button');
+      /**
+       *  On load, called to load the auth2 library and API client library.
+       */
+      function handleClientLoad() {
+        gapi.load('client:auth2', initClient);
+      }
+      /**
+       *  Initializes the API client library and sets up sign-in state
+       *  listeners.
+       */
+      function initClient() {
+        gapi.client.init({
+          apiKey: API_KEY,
+          clientId: CLIENT_ID,
+          discoveryDocs: DISCOVERY_DOCS,
+          scope: SCOPES
+        }).then(function() {
+          // Listen for sign-in state changes.
+          gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+          // Handle the initial sign-in state.
+          updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+          authorizeButton.onclick = handleAuthClick;
+          signoutButton.onclick = handleSignoutClick;
+        });
+      }
+      /**
+       *  Called when the signed in status changes, to update the UI
+       *  appropriately. After a sign-in, the API is called.
+       */
+      function updateSigninStatus(isSignedIn) {
+        if (isSignedIn) {
+          authorizeButton.style.display = 'none';
+          signoutButton.style.display = 'block';
+          initMatch();
+        } else {
+          authorizeButton.style.display = 'block';
+          signoutButton.style.display = 'none';
+        }
+      }
+      /**
+       *  Sign in the user upon button click.
+       */
+      function handleAuthClick(event) {
+        gapi.auth2.getAuthInstance().signIn();
+      }
+      /**
+       *  Sign out the user upon button click.
+       */
+      function handleSignoutClick(event) {
+        gapi.auth2.getAuthInstance().signOut();
+      }
+      /**
+       * Append a pre element to the body containing the given message
+       * as its text node. Used to display the results of the API call.
+       *
+       * @param {string} message Text to be placed in pre element.
+       */
+      function appendPre(message) {
+        var pre = document.getElementById('content');
+        var textContent = document.createTextNode(message + '\n');
+        pre.appendChild(textContent);
+      }
+      const selectMentee = user => ({
+        name: `${user[2]} ${user[3]} ${user[4]}`,
+        email: user[9],
+        college: user[11],
+        major: user[13],
+        id: user[9]
+      });
+      const selectMentor = user =>
+        ({
+          name: user[1],
+          email: user[2],
+          major: user[4],
+          college: user[5],
+          id: user[2]
+        })
+      const menteeDetails = {
+        spreadsheetId: "1hYJI9U5R4e1-bOhSdNowPPk-cskxrIX4p3Cqtk29II0",
+        range: 'A2:AI376',
+      }
+      const mentorDetails = {
+        spreadsheetId: "18zmzgEI6DzS-r_GRr9SuE5OSk6fIE2RWuJb7AJv8AgE",
+        range: "A2:I47"
+      }
+
+      function initMatch() {
+        fetchData({
+          spreadsheetId: mentorDetails.spreadsheetId,
+          range: mentorDetails.range,
+          selector: selectMentor
+        }).then(mentors => {
+          fetchData({
+            spreadsheetId: menteeDetails.spreadsheetId,
+            range: menteeDetails.range,
+            selector: selectMentee
+          }).then(mentees => {
+            match({
+              mentors,
+              mentees
+            });
+          })
+        })
+      }
+
+      function fetchData({
+        spreadsheetId,
+        range,
+        selector
+      }) {
+        return new Promise((resolve, reject) => {
+          gapi.client.sheets.spreadsheets.values.get({
+            spreadsheetId,
+            range
+          }).then(function(response) {
+            var range = response.result;
+            if (range.values.length > 0) {
+              resolve(getRows(range.values, selector))
+            } else {
+              reject('No data found.');
+            }
+          }, function(response) {
+            reject('Error: ' + response.result.error.message);
+          });
+        })
+      }
+
+      function getRows(values, selector) {
+        const result = []
+        for (i = 0; i < values.length; i++) {;
+          result.push(selector(values[i]));
+        }
+        return result;
+      }
+
+      function match({
+        mentees,
+        mentors
+      }) {
+        appendPre(`${mentees.length} mentees and ${mentors.length} mentors`)
+        const {
+          matches,
+          unmatchedMentees,
+        } = execMatch({
+          mentors,
+          mentees
+        })
+        const unmatchedMentors = []
+        const finalMatches = selectorPairs(removeUnpaired(matches, unmatchedMentors))
+        finalMatches.forEach(pair => {
+          appendPre(JSON.stringify(pair))
+        })
+        appendPre('\nunmatched mentors:')
+        unmatchedMentors.forEach(mentor => {
+          appendPre(mentor)
+        })
+        appendPre('\nunmatched mentees:')
+        unmatchedMentees.forEach(mentee => {
+          appendPre(mentee)
+        })
+      }
+
+      function pair(matches, mentorId, mentee, reason) {
+        matches[mentorId].mentees.push(mentee)
+        matches[mentorId].reasons.push(reason);
+      }
+      const prettify = (lst, attr) => lst.reduce((acc, item, idx) =>
+        acc + `${attr ? item[attr] : item}${idx === lst.length - 1 ? '' : ', '}`, "");
+
+      function selectorPairs(matches) {
+        const results = [];
+        for (const mentorId in matches) {
+          results.push({
+            mentor: mentorId,
+            mentees: prettify(matches[mentorId].mentees, "id"),
+            reason: prettify(matches[mentorId].reasons)
+          })
+        }
+        return results;
+      }
+
+      function removeUnpaired(matches, unmatchedMentors) {
+        const results = Object.assign(matches);
+        for (const mentorId in results) {
+          if (results[mentorId].mentees.length === 0) {
+            unmatchedMentors.push(mentorId)
+            delete results[mentorId]
+          }
+        }
+        return results;
+      }
+      const isMentorFullyPaired = (matches, mentorId) => {
+        const mentor = matches[mentorId];
+        return mentor.maxMenteesSize === mentor.mentees.length;
+      }
+      const filterIdx = (lst, index) => lst.filter((_, idx) => idx !== index)
+      const majorMatch = (mentee, mentors) => mentors.findIndex(mentor => mentor.major === mentee.major)
+      const collegeMatch = (mentee, mentors) => mentors.findIndex(mentor => mentor.college === mentee.college)
+      const majorAndCollegeMatch = (mentee, mentors) => mentors.findIndex(mentor => mentor.college === mentee.college &&
+        mentor.major === mentee.major)
+
+      function setup(mentors) {
+        mentors.forEach((mentor) => {
+          matches[mentor.id] = {
+            mentees: [],
+            maxMenteesSize: 4,
+            reasons: []
+          }
+        })
+      }
+
+      function execMatch({
+        mentors,
+        mentees
+      }) {
+        let mentorIdx = 0;
+        let mentor;
+        let mentee;
+        let menteeIdx = 0;
+        let reason;
+        setup(mentors)
+        const unmatchedMentees = []
+        while (mentors.length > 0) {
+          mentee = mentees[menteeIdx]
+          if ((mentorIdx = majorAndCollegeMatch(mentee, mentors)) > -1) {
+            reason = "college & major"
+          } else if ((mentorIdx = collegeMatch(mentee, mentors)) > -1) {
+            reason = "college"
+          } else if ((mentorIdx = majorMatch(mentee, mentors)) > -1) {
+            reason = "major"
+          } else {
+            unmatchedMentees.push(mentee.id)
+            menteeIdx++;
+            if (menteeIdx > mentees.length - 1) {
+              break;
+            }
+            continue;
+          }
+          mentor = mentors[mentorIdx]
+          pair(mentor.id, mentee, reason)
+          if (isMentorFullyPaired(mentor.id)) {
+            mentors = filterIdx(mentors, mentorIdx)
+          }
+          menteeIdx++
+          if (menteeIdx > mentees.length - 1) {
+            break;
+          }
+        }
+      }
+    </script>
+
+    <script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()" onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
+  </body>
+
+</html>
