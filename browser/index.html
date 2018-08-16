@@ -101,7 +101,8 @@
           email: user[2],
           major: user[4],
           college: user[5],
-          id: user[2]
+          id: user[2],
+          max: 8
         })
       const menteeDetails = {
         spreadsheetId: "1hYJI9U5R4e1-bOhSdNowPPk-cskxrIX4p3Cqtk29II0",
@@ -166,7 +167,7 @@
         mentors
       }) {
         appendPre(`${mentees.length} mentees and ${mentors.length} mentors`)
-        const {
+        let {
           matches,
           unmatchedMentees,
         } = execMatch({
@@ -174,8 +175,8 @@
           mentees
         })
         const unmatchedMentors = []
-        const finalMatches = selectorPairs(removeUnpaired(matches, unmatchedMentors))
-        finalMatches.forEach(pair => {
+        removeUnpaired(matches, unmatchedMentors)
+        selectorPairs(matches).forEach(pair => {
           appendPre(JSON.stringify(pair))
         })
         appendPre('\nunmatched mentors:')
@@ -208,14 +209,12 @@
       }
 
       function removeUnpaired(matches, unmatchedMentors) {
-        const results = Object.assign(matches);
-        for (const mentorId in results) {
-          if (results[mentorId].mentees.length === 0) {
+        for (const mentorId in matches) {
+          if (matches[mentorId].mentees.length === 0) {
             unmatchedMentors.push(mentorId)
-            delete results[mentorId]
+            delete matches[mentorId]
           }
         }
-        return results;
       }
       const isMentorFullyPaired = (matches, mentorId) => {
         const mentor = matches[mentorId];
@@ -231,18 +230,17 @@
         mentors.forEach((mentor) => {
           matches[mentor.id] = {
             mentees: [],
-            maxMenteesSize: 4,
+            maxMenteesSize: mentor.max || 8,
             reasons: []
           }
         })
       }
-      // check IDs
-      // check mentee limits
+
       function execMatch({
         mentors,
         mentees
       }) {
-        const matches = [];
+        const matches = {};
         const unmatchedMentees = []
         let mentorIdx = 0;
         let mentor;
