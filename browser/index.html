@@ -227,7 +227,7 @@
       const majorAndCollegeMatch = (mentee, mentors) => mentors.findIndex(mentor => mentor.college === mentee.college &&
         mentor.major === mentee.major)
 
-      function setup(mentors) {
+      function setup(matches, mentors) {
         mentors.forEach((mentor) => {
           matches[mentor.id] = {
             mentees: [],
@@ -242,13 +242,14 @@
         mentors,
         mentees
       }) {
+        const matches = [];
+        const unmatchedMentees = []
         let mentorIdx = 0;
         let mentor;
         let mentee;
         let menteeIdx = 0;
         let reason;
-        setup(mentors)
-        const unmatchedMentees = []
+        setup(matches, mentors)
         while (mentors.length > 0) {
           mentee = mentees[menteeIdx]
           if ((mentorIdx = majorAndCollegeMatch(mentee, mentors)) > -1) {
@@ -266,14 +267,18 @@
             continue;
           }
           mentor = mentors[mentorIdx]
-          pair(mentor.id, mentee, reason)
-          if (isMentorFullyPaired(mentor.id)) {
+          pair(matches, mentor.id, mentee, reason)
+          if (isMentorFullyPaired(matches, mentor.id)) {
             mentors = filterIdx(mentors, mentorIdx)
           }
           menteeIdx++
           if (menteeIdx > mentees.length - 1) {
             break;
           }
+        }
+        return {
+          matches,
+          unmatchedMentees
         }
       }
     </script>
