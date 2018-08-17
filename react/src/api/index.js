@@ -13,10 +13,13 @@ var DISCOVERY_DOCS = [
 var SCOPES = 'https://www.googleapis.com/auth/spreadsheets.readonly';
 var authorizeButton = document.getElementById('authorize_button');
 var signoutButton = document.getElementById('signout_button');
+const gapi = window.gapi;
+let defaults;
 /**
  *  On load, called to load the auth2 library and API client library.
  */
-function handleClientLoad() {
+function handleClientLoad(d) {
+  defaults = d;
   gapi.load('client:auth2', initClient);
 }
 /**

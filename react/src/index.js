@@ -27,12 +27,12 @@ class App extends PureComponent {
   loadScript() {
     const script = document.createElement('script');
     script.src = 'https://apis.google.com/js/api.js';
-    // script.async = true;
+    script.async = true;
     document.body.appendChild(script);
   }
 
-  componentWillMount() {
-    this.loadScript();
+  async componentDidMount() {
+    await this.loadScript();
     const {
       matches: matchesSPMP,
       unmatchedMentees: unmatchedMenteesSPMP,
@@ -60,10 +60,10 @@ class App extends PureComponent {
       <div className="uk-section uk-section-small uk-section-muted">
         <div className="uk-container">
           {/* Add buttons to initiate auth sequence and sign out */}
-          <button id="authorize_button" style="display: none;">
+          <button id="authorize_button" style={{ display: 'none;' }}>
             Authorize
           </button>
-          <button id="signout_button" style="display: none;">
+          <button id="signout_button" style={{ display: 'none;' }}>
             Sign Out
           </button>
           <ul
