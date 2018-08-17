@@ -50,6 +50,13 @@ class App extends PureComponent {
     return (
       <div className="uk-section uk-section-small uk-section-muted">
         <div className="uk-container">
+          {/* Add buttons to initiate auth sequence and sign out */}
+          <button id="authorize_button" style="display: none;">
+            Authorize
+          </button>
+          <button id="signout_button" style="display: none;">
+            Sign Out
+          </button>
           <ul
             className="uk-subnav uk-subnav-pill uk-flex-center"
             uk-switcher=""
