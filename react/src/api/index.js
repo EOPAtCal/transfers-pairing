@@ -13,15 +13,7 @@ var DISCOVERY_DOCS = [
 var SCOPES = 'https://www.googleapis.com/auth/spreadsheets.readonly';
 var authorizeButton = document.getElementById('authorize_button');
 var signoutButton = document.getElementById('signout_button');
-const gapi = window.gapi;
-let defaults;
-/**
- *  On load, called to load the auth2 library and API client library.
- */
-function handleClientLoad(d) {
-  defaults = d;
-  gapi.load('client:auth2', initClient);
-}
+
 /**
  *  Initializes the API client library and sets up sign-in state
  *  listeners.
@@ -47,11 +39,11 @@ function initClient() {
  *  Called when the signed in status changes, to update the UI
  *  appropriately. After a sign-in, the API is called.
  */
-function updateSigninStatus(isSignedIn) {
+async function updateSigninStatus(isSignedIn) {
   if (isSignedIn) {
     authorizeButton.style.display = 'none';
     signoutButton.style.display = 'block';
-    initMatch();
+    await initMatch();
   } else {
     authorizeButton.style.display = 'block';
     signoutButton.style.display = 'none';
@@ -71,7 +63,6 @@ function handleSignoutClick(event) {
 }
 
 const selectMentee = user => ({
-  name: `${user[2]} ${user[3]} ${user[4]}`,
   email: user[9],
   college: user[11],
   major: user[13],
@@ -80,7 +71,6 @@ const selectMentee = user => ({
   }
 });
 const selectMentor = user => ({
-  name: user[1],
   email: user[2],
   major: user[4],
   college: user[5],
@@ -109,10 +99,13 @@ function initMatch() {
       range: menteeDetails.range,
       selector: selectMentee
     }).then(mentees => {
-      match({
+      const matchResults = match({
         mentors,
         mentees
       });
+      matches = matchResults.matches;
+      unmatchedMentees = matchResults.unmatchedMentees;
+      unmatchedMentors = matchResults.unmatchedMentors;
     });
   });
 }
@@ -146,6 +139,22 @@ function getRows(values, selector) {
     result.push(selector(values[i]));
   }
   return result;
+}
+
+const gapi = window.gapi;
+let defaults;
+let matches, unmatchedMentees, unmatchedMentors;
+/**
+ *  On load, called to load the auth2 library and API client library.
+ */
+async function handleClientLoad(d) {
+  defaults = d;
+  await gapi.load('client:auth2', initClient);
+  return {
+    matches,
+    unmatchedMentees,
+    unmatchedMentors
+  };
 }
 
 export default handleClientLoad;

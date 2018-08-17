@@ -37,13 +37,13 @@ class App extends PureComponent {
       matches: matchesSPMP,
       unmatchedMentees: unmatchedMenteesSPMP,
       unmatchedMentors: unmatchedMentorsSPMP
-    } = handleClientLoad(defaultsSPMP);
+    } = await handleClientLoad(defaultsSPMP);
 
     const {
       matches: matchesMI,
       unmatchedMentees: unmatchedMenteesMI,
       unmatchedMentors: unmatchedMentorsMI
-    } = handleClientLoad(defaultsMI);
+    } = await handleClientLoad(defaultsMI);
 
     this.setState({
       matchesMI,
