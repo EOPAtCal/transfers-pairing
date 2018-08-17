@@ -6,8 +6,6 @@ import UIkit from 'uikit';
 import Icons from 'uikit/dist/js/uikit-icons';
 import Page from './components/Page';
 import handleClientLoad from './api';
-// import matchesSPMP from './data/matchesSPMP.json';
-// import matchesMI from './data/matchesMI.json';
 import defaultsSPMP from './data/defaultsSPMP.json';
 import defaultsMI from './data/defaultsMI.json';
 
@@ -55,15 +53,16 @@ class App extends PureComponent {
     });
   }
   render() {
-    const { matchesMI, matchesSPMP } = this.state;
+    const { matchesMI = [], matchesSPMP = [] } = this.state;
+    console.log(this.state);
     return (
       <div className="uk-section uk-section-small uk-section-muted">
         <div className="uk-container">
           {/* Add buttons to initiate auth sequence and sign out */}
-          <button id="authorize_button" style={{ display: 'none;' }}>
+          <button id="authorize_button" style={{ display: 'none' }}>
             Authorize
           </button>
-          <button id="signout_button" style={{ display: 'none;' }}>
+          <button id="signout_button" style={{ display: 'none' }}>
             Sign Out
           </button>
           <ul

@@ -62,41 +62,49 @@ function handleSignoutClick(event) {
   gapi.auth2.getAuthInstance().signOut();
 }
 
-const selectMentee = user => ({
-  email: user[9],
-  college: user[11],
-  major: user[13],
-  get id() {
-    return this.email;
-  }
-});
-const selectMentor = user => ({
-  email: user[2],
-  major: user[4],
-  college: user[5],
-  get id() {
-    return this.email;
-  },
-  max: user[8] || 4
-});
-const menteeDetails = {
-  spreadsheetId: '1hYJI9U5R4e1-bOhSdNowPPk-cskxrIX4p3Cqtk29II0',
-  range: 'A2:AI376'
-};
-const mentorDetails = {
-  spreadsheetId: '18zmzgEI6DzS-r_GRr9SuE5OSk6fIE2RWuJb7AJv8AgE',
-  range: 'A2:I47'
-};
+function selectMentee(user) {
+  return new Promise((resolve, reject) => {
+    if (defaults) {
+      resolve({
+        email: user[defaults.menteeEmail],
+        college: user[defaults.menteeCollege],
+        major: user[defaults.menteeMajor],
+        get id() {
+          return this.email;
+        }
+      });
+    } else {
+      reject(`Error finding defaults`);
+    }
+  });
+}
+
+function selectMentor(user) {
+  return new Promise((resolve, reject) => {
+    if (defaults) {
+      resolve({
+        email: user[defaults.mentorEmail],
+        college: user[defaults.mentorCollege],
+        major: user[defaults.mentorMajor],
+        get id() {
+          return this.email;
+        }
+      });
+    } else {
+      reject(`Error finding defaults`);
+    }
+  });
+}
 
 function initMatch() {
   fetchData({
-    spreadsheetId: mentorDetails.spreadsheetId,
-    range: mentorDetails.range,
+    spreadsheetId: defaults.mentorSpreadsheetId,
+    range: defaults.mentorRange,
     selector: selectMentor
   }).then(mentors => {
     fetchData({
-      spreadsheetId: menteeDetails.spreadsheetId,
-      range: menteeDetails.range,
+      spreadsheetId: defaults.menteeSpreadsheetId,
+      range: defaults.menteeRange,
       selector: selectMentee
     }).then(mentees => {
       const matchResults = match({
@@ -149,6 +157,7 @@ let matches, unmatchedMentees, unmatchedMentors;
  */
 async function handleClientLoad(d) {
   defaults = d;
+  // console.log(defaults, d);
   await gapi.load('client:auth2', initClient);
   return {
     matches,
