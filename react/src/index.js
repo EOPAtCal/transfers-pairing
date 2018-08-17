@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 import 'uikit/dist/css/uikit.min.css';
 import UIkit from 'uikit';
-
 import Icons from 'uikit/dist/js/uikit-icons';
 import Page from './components/Page';
 import handleClientLoad from './api';
@@ -19,7 +18,9 @@ class App extends PureComponent {
     unmatchedMenteesMI: [],
     unmatchedMenteesSPMP: [],
     unmatchedMentorsMI: [],
-    unmatchedMentorsSPMP: []
+    unmatchedMentorsSPMP: [],
+    optionsSPMP: defaultsSPMP,
+    optionsMI: defaultsMI
   };
 
   loadScript() {
@@ -29,19 +30,25 @@ class App extends PureComponent {
     document.body.appendChild(script);
   }
 
+  handleChangeOptions(options) {
+    this.setState({
+      ...options
+    });
+  }
+
   async componentDidMount() {
     await this.loadScript();
     const {
       matches: matchesSPMP,
       unmatchedMentees: unmatchedMenteesSPMP,
       unmatchedMentors: unmatchedMentorsSPMP
-    } = await handleClientLoad(defaultsSPMP);
+    } = await handleClientLoad(this.state.optionsSPMP);
 
     const {
       matches: matchesMI,
       unmatchedMentees: unmatchedMenteesMI,
       unmatchedMentors: unmatchedMentorsMI
-    } = await handleClientLoad(defaultsMI);
+    } = await handleClientLoad(this.state.optionsMI);
 
     this.setState({
       matchesMI,
@@ -52,6 +59,7 @@ class App extends PureComponent {
       unmatchedMentorsSPMP
     });
   }
+
   render() {
     const { matchesMI = [], matchesSPMP = [] } = this.state;
     return (

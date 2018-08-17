@@ -157,7 +157,7 @@ let matches, unmatchedMentees, unmatchedMentors;
  */
 async function handleClientLoad(o) {
   options = o;
-  await gapi.load('client:auth2', await initClient);
+  await gapi.load('client:auth2', initClient);
   return {
     matches,
     unmatchedMentees,
