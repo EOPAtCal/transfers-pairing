@@ -4,8 +4,8 @@ import 'uikit/dist/css/uikit.min.css';
 import UIkit from 'uikit';
 import Icons from 'uikit/dist/js/uikit-icons';
 import Page from './Page';
-import matchesSPMP from './data/defaultsSPMP.json';
-import matchesMI from './data/defaultsMI.json';
+import matchesSPMP from './data/matchesSPMP.json';
+import matchesMI from './data/matchesMI.json';
 
 UIkit.use(Icons);
 window.UIkit = UIkit;
@@ -21,19 +21,19 @@ class App extends PureComponent {
     return (
       <div>
         <ul className="uk-subnav uk-subnav-pill uk-flex-center" uk-switcher="">
-          <li key="matchesSPMP">
+          <li>
             <a>starting point mentorship program</a>
           </li>
-          <li key="matchesMi">
+          <li>
             <a>major insights</a>
           </li>
         </ul>
 
         <ul className="uk-switcher uk-margin">
-          <li key="matchesSPMP">
+          <li>
             <Page matches={matchesSPMP} />
           </li>
-          <li key="matchesMi">
+          <li>
             <Page matches={matchesMI} />
           </li>
         </ul>
