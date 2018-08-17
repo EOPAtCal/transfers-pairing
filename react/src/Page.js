@@ -3,9 +3,9 @@ import Options from './Options';
 import Main from './Main';
 
 const Page = ({ matches }) => (
-  <div class="uk-container uk-text-center">
+  <div className="uk-container uk-text-center">
     <div>
-      <ul class="uk-subnav uk-subnav-pill" uk-switcher="">
+      <ul className="uk-subnav uk-subnav-pill" uk-switcher="">
         <li>
           <a>Main</a>
         </li>
@@ -14,7 +14,7 @@ const Page = ({ matches }) => (
         </li>
       </ul>
 
-      <ul class="uk-switcher uk-margin">
+      <ul className="uk-switcher uk-margin">
         <li>
           <Main matches={matches} />
         </li>

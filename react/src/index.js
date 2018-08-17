@@ -18,7 +18,7 @@ class App extends PureComponent {
     const { matches1, matches2 } = this.state;
     return (
       <div>
-        <ul class="uk-subnav uk-subnav-pill uk-flex-center" uk-switcher="">
+        <ul className="uk-subnav uk-subnav-pill uk-flex-center" uk-switcher="">
           <li>
             <a>starting point mentorship program</a>
           </li>
@@ -27,7 +27,7 @@ class App extends PureComponent {
           </li>
         </ul>
 
-        <ul class="uk-switcher uk-margin">
+        <ul className="uk-switcher uk-margin">
           <li>
             <Page matches={matches1} />
           </li>
