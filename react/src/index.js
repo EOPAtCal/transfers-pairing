@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 import 'uikit/dist/css/uikit.min.css';
 import UIkit from 'uikit';
+
 import Icons from 'uikit/dist/js/uikit-icons';
 import Page from './components/Page';
 import handleClientLoad from './api';
@@ -23,7 +24,15 @@ class App extends PureComponent {
     unmatchedMentorsSPMP: []
   };
 
+  loadScript() {
+    const script = document.createElement('script');
+    script.src = 'https://apis.google.com/js/api.js';
+    // script.async = true;
+    document.body.appendChild(script);
+  }
+
   componentWillMount() {
+    this.loadScript();
     const {
       matches: matchesSPMP,
       unmatchedMentees: unmatchedMenteesSPMP,

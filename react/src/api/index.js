@@ -1,4 +1,5 @@
 import match from './match';
+
 // Client ID and API key from the Developer Console
 var CLIENT_ID =
   '189506913922-3lr5j6kj5gr173gh59uh6sm6476mir21.apps.googleusercontent.com';
@@ -138,7 +139,7 @@ function fetchData({ spreadsheetId, range, selector }) {
 
 function getRows(values, selector) {
   const result = [];
-  for (i = 0; i < values.length; i++) {
+  for (let i = 0; i < values.length; i++) {
     result.push(selector(values[i]));
   }
   return result;
