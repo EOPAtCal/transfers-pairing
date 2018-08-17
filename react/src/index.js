@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import 'uikit/dist/css/uikit.min.css';
 import UIkit from 'uikit';
 import Icons from 'uikit/dist/js/uikit-icons';
-import Page from './Page';
+import Page from './components/Page';
 import matchesSPMP from './data/matchesSPMP.json';
 import matchesMI from './data/matchesMI.json';
 import defaultsSPMP from './data/defaultsSPMP.json';

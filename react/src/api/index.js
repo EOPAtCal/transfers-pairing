@@ -15,14 +15,14 @@ var signoutButton = document.getElementById('signout_button');
 /**
  *  On load, called to load the auth2 library and API client library.
  */
-function handleClientLoad() {
+export default function handleClientLoad() {
   gapi.load('client:auth2', initClient);
 }
 /**
  *  Initializes the API client library and sets up sign-in state
  *  listeners.
  */
-export default function initClient() {
+function initClient() {
   gapi.client
     .init({
       apiKey: API_KEY,
