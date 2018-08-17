@@ -64,11 +64,11 @@ function handleSignoutClick(event) {
 
 function selectMentee(user) {
   return new Promise((resolve, reject) => {
-    if (defaults) {
+    if (options) {
       resolve({
-        email: user[defaults.menteeEmail],
-        college: user[defaults.menteeCollege],
-        major: user[defaults.menteeMajor],
+        email: user[options.menteeEmail],
+        college: user[options.menteeCollege],
+        major: user[options.menteeMajor],
         get id() {
           return this.email;
         }
@@ -81,11 +81,11 @@ function selectMentee(user) {
 
 function selectMentor(user) {
   return new Promise((resolve, reject) => {
-    if (defaults) {
+    if (options) {
       resolve({
-        email: user[defaults.mentorEmail],
-        college: user[defaults.mentorCollege],
-        major: user[defaults.mentorMajor],
+        email: user[options.mentorEmail],
+        college: user[options.mentorCollege],
+        major: user[options.mentorMajor],
         get id() {
           return this.email;
         }
@@ -98,13 +98,13 @@ function selectMentor(user) {
 
 function initMatch() {
   fetchData({
-    spreadsheetId: defaults.mentorSpreadsheetId,
-    range: defaults.mentorRange,
+    spreadsheetId: options.mentorSpreadsheetId,
+    range: options.mentorRange,
     selector: selectMentor
   }).then(mentors => {
     fetchData({
-      spreadsheetId: defaults.menteeSpreadsheetId,
-      range: defaults.menteeRange,
+      spreadsheetId: options.menteeSpreadsheetId,
+      range: options.menteeRange,
       selector: selectMentee
     }).then(mentees => {
       const matchResults = match({
@@ -129,7 +129,7 @@ function fetchData({ spreadsheetId, range, selector }) {
         function(response) {
           var range = response.result;
           if (range.values.length > 0) {
-            resolve(getRows(range.values, selector));
+            getRows(range.values, selector).then(rows => resolve(rows));
           } else {
             reject('No data found.');
           }
@@ -141,23 +141,23 @@ function fetchData({ spreadsheetId, range, selector }) {
   });
 }
 
-function getRows(values, selector) {
+async function getRows(values, selector) {
   const result = [];
   for (let i = 0; i < values.length; i++) {
-    result.push(selector(values[i]));
+    result.push(await selector(values[i]));
   }
   return result;
 }
 
 const gapi = window.gapi;
-let defaults;
+let options;
 let matches, unmatchedMentees, unmatchedMentors;
 /**
  *  On load, called to load the auth2 library and API client library.
  */
-async function handleClientLoad(d) {
-  defaults = d;
-  await gapi.load('client:auth2', initClient);
+async function handleClientLoad(o) {
+  options = o;
+  await gapi.load('client:auth2', await initClient);
   return {
     matches,
     unmatchedMentees,
