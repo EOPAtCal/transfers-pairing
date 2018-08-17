@@ -7,10 +7,10 @@
   "spmpMentorMajor": "",
   "matchByMajors": "",
   "matchByColleges": "",
-  "miMentorSpreadsheetId": "",
-  "miMentorRange": "",
-  "miMentorName": "",
-  "miMentorEmail": "",
-  "miMentorCollege": "",
-  "miMentorMajor": ""
+  "spmpMenteeSpreadsheetId": "",
+  "spmpMenteeRange": "",
+  "spmpMenteeName": "",
+  "spmpMenteeEmail": "",
+  "spmpMenteeCollege": "",
+  "spmpMenteeMajor": ""
 }

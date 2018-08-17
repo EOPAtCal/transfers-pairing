@@ -12,8 +12,30 @@ class Options extends PureComponent {
       [target.name]: value
     });
   };
+
+  handleResetAllToDefaults = () => {
+    this.setState({
+      ...defaults
+    });
+  };
+
   render() {
-    const {} = this.state;
+    const {
+      spmpMentorSpreadsheetId,
+      spmpMentorRange,
+      spmpMentorName,
+      spmpMentorEmail,
+      spmpMentorCollege,
+      spmpMentorMajor,
+      matchByMajors,
+      matchByColleges,
+      spmpMenteeSpreadsheetId,
+      spmpMenteeRange,
+      spmpMenteeName,
+      spmpMenteeEmail,
+      spmpMenteeCollege,
+      spmpMenteeMajor
+    } = this.state;
     return (
       <div>
         <h2 class="uk-text-capitalize">options</h2>
@@ -36,6 +58,7 @@ class Options extends PureComponent {
                       class="uk-input uk-form-width-small"
                       type="text"
                       required
+                      value={spmpMentorSpreadsheetId}
                     />
                   </div>
                 </div>
@@ -49,6 +72,7 @@ class Options extends PureComponent {
                       class="uk-input uk-form-width-small"
                       type="text"
                       required
+                      value={spmpMentorRange}
                     />
                   </div>
                 </div>
@@ -68,6 +92,7 @@ class Options extends PureComponent {
                       class="uk-input uk-form-width-small"
                       type="text"
                       required
+                      value={spmpMentorName}
                     />
                   </div>
                 </div>
@@ -81,6 +106,7 @@ class Options extends PureComponent {
                       class="uk-input uk-form-width-small"
                       type="email"
                       required
+                      value={spmpMentorEmail}
                     />
                   </div>
                 </div>
@@ -93,6 +119,8 @@ class Options extends PureComponent {
                       name="spmpMentorCollege"
                       class="uk-input uk-form-width-small"
                       type="text"
+                      required
+                      value={spmpMentorCollege}
                     />
                   </div>
                 </div>
@@ -105,6 +133,8 @@ class Options extends PureComponent {
                       name="spmpMentorMajor"
                       class="uk-input uk-form-width-small"
                       type="text"
+                      required
+                      value={spmpMentorMajor}
                     />
                   </div>
                 </div>
@@ -121,10 +151,11 @@ class Options extends PureComponent {
                   </label>
                   <div class="uk-form-controls">
                     <input
-                      name="miMenteeSpreadsheetId"
+                      name="spmpMenteeSpreadsheetId"
                       class="uk-input uk-form-width-small"
                       type="text"
                       required
+                      value={spmpMenteeSpreadsheetId}
                     />
                   </div>
                 </div>
@@ -134,10 +165,11 @@ class Options extends PureComponent {
                   </label>
                   <div class="uk-form-controls">
                     <input
-                      name="miMenteeRange"
+                      name="spmpMenteeRange"
                       class="uk-input uk-form-width-small"
                       type="text"
                       required
+                      value={spmpMenteeRange}
                     />
                   </div>
                 </div>
@@ -153,10 +185,11 @@ class Options extends PureComponent {
                   </label>
                   <div class="uk-form-controls">
                     <input
-                      name="miMenteeName"
+                      name="spmpMenteeName"
                       class="uk-input uk-form-width-small"
                       type="text"
                       required
+                      value={spmpMenteeName}
                     />
                   </div>
                 </div>
@@ -166,10 +199,11 @@ class Options extends PureComponent {
                   </label>
                   <div class="uk-form-controls">
                     <input
-                      name="miMenteeEmail"
+                      name="spmpMenteeEmail"
                       class="uk-input uk-form-width-small"
                       type="email"
                       required
+                      value={spmpMenteeEmail}
                     />
                   </div>
                 </div>
@@ -179,9 +213,11 @@ class Options extends PureComponent {
                   </label>
                   <div class="uk-form-controls">
                     <input
-                      name="miMenteeCollege"
+                      name="spmpMenteeCollege"
                       class="uk-input uk-form-width-small"
                       type="text"
+                      required
+                      value={spmpMenteeCollege}
                     />
                   </div>
                 </div>
@@ -191,9 +227,11 @@ class Options extends PureComponent {
                   </label>
                   <div class="uk-form-controls">
                     <input
-                      name="miMenteeMajor"
+                      name="spmpMenteeMajor"
                       class="uk-input uk-form-width-small"
                       type="text"
+                      required
+                      value={spmpMenteeMajor}
                     />
                   </div>
                 </div>
@@ -206,9 +244,10 @@ class Options extends PureComponent {
               <label>
                 <input
                   name="matchByMajors"
-                  class="uk-checkbox"
+                  class="uk-checkbox uk-margin-small-right"
                   type="checkbox"
                   checked
+                  value={matchByMajors}
                 />
                 match by majors
               </label>
@@ -217,28 +256,32 @@ class Options extends PureComponent {
               <label>
                 <input
                   name="matchByColleges"
-                  class="uk-checkbox"
+                  class="uk-checkbox uk-margin-small-right"
                   type="checkbox"
                   checked
+                  value={matchByColleges}
                 />
                 match by colleges
               </label>
             </div>
-            <div class="uk-margin" hidden>
+            {/* <div class="uk-margin">
               <label>
                 <input
-                  name="reselAll"
+                  name="random"
                   class="uk-checkbox"
                   type="checkbox"
                   checked
                 />
                 randomly match all unmatched
               </label>
-            </div>
+            </div> */}
           </fieldset>
 
           <div class="uk-margin">
-            <button class="uk-button uk-button-default">
+            <button
+              class="uk-button uk-button-default"
+              onClick={this.handleResetAllToDefaults}
+            >
               reset all to defaults
             </button>
           </div>
