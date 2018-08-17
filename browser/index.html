@@ -93,7 +93,9 @@
         email: user[9],
         college: user[11],
         major: user[13],
-        id: user[9]
+        get id() {
+          return this.email
+        }
       });
       const selectMentor = user =>
         ({
@@ -101,7 +103,9 @@
           email: user[2],
           major: user[4],
           college: user[5],
-          id: user[2],
+          get id() {
+            return this.email
+          },
           max: 8
         })
       const menteeDetails = {
