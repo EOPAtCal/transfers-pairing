@@ -19,7 +19,7 @@ class App extends PureComponent {
   };
 
   render() {
-    const { matches } = this.state;
+    const { matchesMI, matchesSPMP } = this.state;
     return (
       <div>
         <ul className="uk-subnav uk-subnav-pill uk-flex-center" uk-switcher="">
