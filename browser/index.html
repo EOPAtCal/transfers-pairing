@@ -180,7 +180,7 @@
         })
         const unmatchedMentors = []
         removeUnpaired(matches, unmatchedMentors)
-        selectorPairs(matches).forEach(pair => {
+        selectPairs(matches).forEach(pair => {
           appendPre(JSON.stringify(pair))
         })
         appendPre('\nunmatched mentors:')
@@ -200,7 +200,7 @@
       const prettify = (lst, attr) => lst.reduce((acc, item, idx) =>
         acc + `${attr ? item[attr] : item}${idx === lst.length - 1 ? '' : ', '}`, "");
 
-      function selectorPairs(matches) {
+      function selectPairs(matches) {
         const results = [];
         for (const mentorId in matches) {
           results.push({
@@ -224,7 +224,7 @@
         const mentor = matches[mentorId];
         return mentor.maxMenteesSize === mentor.mentees.length;
       }
-      const filterIdx = (lst, index) => lst.filter((_, idx) => idx !== index)
+      const filterIndex = (lst, index) => lst.filter((_, idx) => idx !== index)
       const majorMatch = (mentee, mentors) => mentors.findIndex(mentor => mentor.major === mentee.major)
       const collegeMatch = (mentee, mentors) => mentors.findIndex(mentor => mentor.college === mentee.college)
       const majorAndCollegeMatch = (mentee, mentors) => mentors.findIndex(mentor => mentor.college === mentee.college &&
@@ -271,7 +271,7 @@
           mentor = mentors[mentorIdx]
           pair(matches, mentor.id, mentee, reason)
           if (isMentorFullyPaired(matches, mentor.id)) {
-            mentors = filterIdx(mentors, mentorIdx)
+            mentors = filterIndex(mentors, mentorIdx)
           }
           menteeIdx++
           if (menteeIdx > mentees.length - 1) {
