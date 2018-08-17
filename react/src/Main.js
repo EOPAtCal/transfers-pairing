@@ -3,8 +3,8 @@ import React from 'react';
 const Main = ({ matches }) => (
   <div>
     <div className="uk-margin uk-text-center">
-      <button className="uk-button uk-button-danger uk-button-large">
-        Match
+      <button className="uk-button uk-button-danger uk-button-large uk-text-large">
+        Match!
       </button>
     </div>
     <hr className="uk-divider-icon" />

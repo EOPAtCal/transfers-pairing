@@ -21,23 +21,28 @@ class App extends PureComponent {
   render() {
     const { matchesMI, matchesSPMP } = this.state;
     return (
-      <div>
-        <ul className="uk-subnav uk-subnav-pill uk-flex-center" uk-switcher="">
-          <li>
-            <a>starting point mentorship program</a>
-          </li>
-          <li>
-            <a>major insights</a>
-          </li>
-        </ul>
-        <ul className="uk-switcher uk-margin">
-          <li>
-            <Page matches={matchesSPMP} defaults={defaultsSPMP} />
-          </li>
-          <li>
-            <Page matches={matchesMI} defaults={defaultsMI} />
-          </li>
-        </ul>
+      <div className="uk-section uk-section-small uk-section-muted">
+        <div className="uk-container">
+          <ul
+            className="uk-subnav uk-subnav-pill uk-flex-center"
+            uk-switcher=""
+          >
+            <li>
+              <a>starting point mentorship program</a>
+            </li>
+            <li>
+              <a>major insights</a>
+            </li>
+          </ul>
+          <ul className="uk-switcher uk-margin">
+            <li>
+              <Page matches={matchesSPMP} defaults={defaultsSPMP} />
+            </li>
+            <li>
+              <Page matches={matchesMI} defaults={defaultsMI} />
+            </li>
+          </ul>
+        </div>
       </div>
     );
   }
