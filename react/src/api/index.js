@@ -1,3 +1,4 @@
+import wait from 'wait.for-es6';
 import match from './match';
 
 // Client ID and API key from the Developer Console
@@ -155,9 +156,9 @@ let matches, unmatchedMentees, unmatchedMentors;
 /**
  *  On load, called to load the auth2 library and API client library.
  */
-async function handleClientLoad(o) {
+function* handleClientLoad(o) {
   options = o;
-  await gapi.load('client:auth2', initClient);
+  yield wait.for(gapi.load('client:auth2', initClient));
   return {
     matches,
     unmatchedMentees,
