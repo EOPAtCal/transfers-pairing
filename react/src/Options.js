@@ -7,6 +7,7 @@ class Options extends PureComponent {
   handleChange = event => {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
+    console.log(target.name, value);
     this.setState({
       [target.name]: value
     });
@@ -106,7 +107,7 @@ class Options extends PureComponent {
                     <input
                       name="spmpMentorEmail"
                       className="uk-input uk-form-width-small"
-                      type="email"
+                      type="text"
                       required
                       value={spmpMentorEmail}
                       onChange={this.handleChange}
@@ -209,7 +210,7 @@ class Options extends PureComponent {
                     <input
                       name="spmpMenteeEmail"
                       className="uk-input uk-form-width-small"
-                      type="email"
+                      type="text"
                       required
                       value={spmpMenteeEmail}
                       onChange={this.handleChange}
@@ -259,8 +260,7 @@ class Options extends PureComponent {
                   name="matchByMajors"
                   className="uk-checkbox uk-margin-small-right"
                   type="checkbox"
-                  checked
-                  value={matchByMajors}
+                  checked={matchByMajors}
                   onChange={this.handleChange}
                 />
                 match by majors
@@ -272,8 +272,7 @@ class Options extends PureComponent {
                   name="matchByColleges"
                   className="uk-checkbox uk-margin-small-right"
                   type="checkbox"
-                  checked
-                  value={matchByColleges}
+                  checked={matchByColleges}
                   onChange={this.handleChange}
                 />
                 match by colleges
