@@ -54,7 +54,6 @@ class App extends PureComponent {
   }
   render() {
     const { matchesMI = [], matchesSPMP = [] } = this.state;
-    console.log(this.state);
     return (
       <div className="uk-section uk-section-small uk-section-muted">
         <div className="uk-container">
