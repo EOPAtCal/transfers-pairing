@@ -1,24 +1,16 @@
 {
-  "SPMP": {
-    "spreadsheetId": "",
-    "range": "",
-    "name": "",
-    "email": "",
-    "college": "",
-    "major": "",
-    "majors": "",
-    "colleges": "",
-    "random": ""
-  },
-  "MI": {
-    "spreadsheetId": "",
-    "range": "",
-    "name": "",
-    "email": "",
-    "college": "",
-    "major": "",
-    "majors": "",
-    "colleges": "",
-    "random": ""
-  }
+  "spmpMentorSpreadsheetId": "",
+  "spmpMentorRange": "",
+  "spmpMentorName": "",
+  "spmpMentorEmail": "",
+  "spmpMentorCollege": "",
+  "spmpMentorMajor": "",
+  "matchByMajors": "",
+  "matchByColleges": "",
+  "miMentorSpreadsheetId": "",
+  "miMentorRange": "",
+  "miMentorName": "",
+  "miMentorEmail": "",
+  "miMentorCollege": "",
+  "miMentorMajor": ""
 }

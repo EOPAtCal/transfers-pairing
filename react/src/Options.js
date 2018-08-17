@@ -13,6 +13,7 @@ class Options extends PureComponent {
     });
   };
   render() {
+    const {} = this.state;
     return (
       <div>
         <h2 class="uk-text-capitalize">options</h2>
@@ -31,7 +32,7 @@ class Options extends PureComponent {
                   </label>
                   <div class="uk-form-controls">
                     <input
-                      name="spmp-mentor-spreadsheetId"
+                      name="spmpMentorSpreadsheetId"
                       class="uk-input uk-form-width-small"
                       type="text"
                       required
@@ -44,7 +45,7 @@ class Options extends PureComponent {
                   </label>
                   <div class="uk-form-controls">
                     <input
-                      name="spmp-mentor-range"
+                      name="spmpMentorRange"
                       class="uk-input uk-form-width-small"
                       type="text"
                       required
@@ -63,7 +64,7 @@ class Options extends PureComponent {
                   </label>
                   <div class="uk-form-controls">
                     <input
-                      name="spmp-mentor-name"
+                      name="spmpMentorName"
                       class="uk-input uk-form-width-small"
                       type="text"
                       required
@@ -76,7 +77,7 @@ class Options extends PureComponent {
                   </label>
                   <div class="uk-form-controls">
                     <input
-                      name="spmp-mentor-email"
+                      name="spmpMentorEmail"
                       class="uk-input uk-form-width-small"
                       type="email"
                       required
@@ -89,7 +90,7 @@ class Options extends PureComponent {
                   </label>
                   <div class="uk-form-controls">
                     <input
-                      name="spmp-mentor-college"
+                      name="spmpMentorCollege"
                       class="uk-input uk-form-width-small"
                       type="text"
                     />
@@ -101,7 +102,7 @@ class Options extends PureComponent {
                   </label>
                   <div class="uk-form-controls">
                     <input
-                      name="spmp-mentor-major"
+                      name="spmpMentorMajor"
                       class="uk-input uk-form-width-small"
                       type="text"
                     />
@@ -120,7 +121,7 @@ class Options extends PureComponent {
                   </label>
                   <div class="uk-form-controls">
                     <input
-                      name="spmp-mentee-xxx"
+                      name="miMenteeSpreadsheetId"
                       class="uk-input uk-form-width-small"
                       type="text"
                       required
@@ -133,7 +134,7 @@ class Options extends PureComponent {
                   </label>
                   <div class="uk-form-controls">
                     <input
-                      name="spmp-mentee-xxx"
+                      name="miMenteeRange"
                       class="uk-input uk-form-width-small"
                       type="text"
                       required
@@ -152,7 +153,7 @@ class Options extends PureComponent {
                   </label>
                   <div class="uk-form-controls">
                     <input
-                      name="spmp-mentee-xxx"
+                      name="miMenteeName"
                       class="uk-input uk-form-width-small"
                       type="text"
                       required
@@ -165,7 +166,7 @@ class Options extends PureComponent {
                   </label>
                   <div class="uk-form-controls">
                     <input
-                      name="spmp-mentee-xxx"
+                      name="miMenteeEmail"
                       class="uk-input uk-form-width-small"
                       type="email"
                       required
@@ -178,7 +179,7 @@ class Options extends PureComponent {
                   </label>
                   <div class="uk-form-controls">
                     <input
-                      name="spmp-mentee-xxx"
+                      name="miMenteeCollege"
                       class="uk-input uk-form-width-small"
                       type="text"
                     />
@@ -190,7 +191,7 @@ class Options extends PureComponent {
                   </label>
                   <div class="uk-form-controls">
                     <input
-                      name="spmp-mentee-xxx"
+                      name="miMenteeMajor"
                       class="uk-input uk-form-width-small"
                       type="text"
                     />
@@ -204,7 +205,7 @@ class Options extends PureComponent {
             <div class="uk-margin">
               <label>
                 <input
-                  name="match-by-majors"
+                  name="matchByMajors"
                   class="uk-checkbox"
                   type="checkbox"
                   checked
@@ -215,7 +216,7 @@ class Options extends PureComponent {
             <div class="uk-margin">
               <label>
                 <input
-                  name="match-by-colleges"
+                  name="matchByColleges"
                   class="uk-checkbox"
                   type="checkbox"
                   checked
@@ -226,7 +227,7 @@ class Options extends PureComponent {
             <div class="uk-margin" hidden>
               <label>
                 <input
-                  name="resel-all"
+                  name="reselAll"
                   class="uk-checkbox"
                   type="checkbox"
                   checked

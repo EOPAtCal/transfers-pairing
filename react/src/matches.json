@@ -1,108 +1,181 @@
-[ { "mentor"      : "alipm@berkeley.edu",
-    "mentees"     : "floreskevin597@gmail.com, jujharkhalsa101@gmail.com, meli.j920@gmail.com",
-    "matchReason" : "major, major, major" },
-  { "mentor"      : "ankhawaunju@berkeley.edu",
-    "mentees"     : "loretha.henry@gmail.com, younthu@my.smccd.edu, 766486988hu@gmail.com, julie.villanueva88@gmail.com",
-    "matchReason" : "college, major, college, college" },
-  { "mentor"      : "ashley.sandoval@berkeley.edu",
-    "mentees"     : "Tltbirthservices@gmail.com, gxrmaine@gmail.com, edwinjoelp98@gmail.com, perez.r.jenna@gmail.com",
-    "matchReason" : "major, major, major, major" },
-  { "mentor"      : "austinwang@berkeley.edu",
-    "mentees"     : "martovalvarez@my.smccd.edu, pauldzul@my.smccd.edu, akashpatel_525@yahoo.co.in, su_kevin@student.smc.edu",
-    "matchReason" : "major, major, major, major" },
-  { "mentor"      : "camerontoy@berkeley.edu",
-    "mentees"     : "jtan224@insite.4cd.edu",
-    "matchReason" : "college" },
-  { "mentor"      : "cverbera@berkeley.edu",
-    "mentees"     : "moheatkumar11@gmail.com, param.singh2015@gmail.com, Munoz.angelahmc@gmail.com, cruz_david_benjamin@student.smc.edu",
-    "matchReason" : "college, college, college, major" },
-  { "mentor"      : "chase0718@berkeley.edu",
-    "mentees"     : "seb.oshagan@gmail.com, ddanielle327@gmail.com, alexis.caviness98@gmail.com, kaur.punamdeep21@gmail.com",
-    "matchReason" : "college, college, major, major" },
-  { "mentor"      : "coreylowe@berkeley.edu",
-    "mentees"     : "elexisbmendoza@gmail.com, tong.bryant.college@gmail.com, robsolis14@gmail.com, Mursal.Hessami@gmail.com",
-    "matchReason" : "college, college & major, college, college & major" },
-  { "mentor"      : "dkotik@berkeley.edu",
-    "mentees"     : "altuvenellyana@gmail.com, yajairagarcia@student.hartnell.edu , desicarr34@gmail.com, analabra15@yahoo.com",
-    "matchReason" : "major, major, major, major" },
-  { "mentor"      : "dylan.lee@berkeley.edu",
-    "mentees"     : "tboykin48@sbcglobal.net, Sergiomaciel@my.smccd.edu, roxascharlene23@yahoo.com, ebustare@zonemail.clpccd.edu",
-    "matchReason" : "major, major, major, major" },
-  { "mentor"      : "fidell",
-    "mentees"     : "ratthanan.lay@gmail.com, kikixiao0123@gmail.com, tashatinagero@gmail.com, jasonx.067@gmail.com",
-    "matchReason" : "college, college, college, college" },
-  { "mentor"      : "harley.n.simpson@berkeley.edu",
-    "mentees"     : "brealkim@gmail.com, emysuarez@yahoo.com",
-    "matchReason" : "major, major" },
-  { "mentor"      : "heather.tran@berkeley.edu",
-    "mentees"     : "eunice971121@gmail.com,  Cquintanilla@gmail.com, s13franco@gmail.com, cmachans@gmail.com",
-    "matchReason" : "college, major, major, major" },
-  { "mentor"      : "hylinn@berkeley.edu",
-    "mentees"     : "tamarikrabb@my.smccd.edu, vdmrazr@gmail.com, irtaza.97@gmail.com, matildaglau@gmail.com",
-    "matchReason" : "major, college, college, college" },
-  { "mentor"      : "idwyer@berkeley.edu",
-    "mentees"     : "michaelgaetos@yahoo.com, alvaradomay10@gmail.com, sunjoseph97@gmail.com, dillonmjohnson27@gmail.com",
-    "matchReason" : "college, college, college, college" },
-  { "mentor"      : "iffatjunaid@gmail.com",
-    "mentees"     : "sierra.thompson.k@gmail.com, tianqian.huang@berkeley.edu, ashley.funaki@gmail.com, soniayau82@gmail.com",
-    "matchReason" : "college, college, major, college" },
-  { "mentor"      : "ikram.magzoub@berkeley.edu",
-    "mentees"     : "dianaparada@yahoo.com",
-    "matchReason" : "college" },
-  { "mentor"      : "jemal@berkeley.edu",
-    "mentees"     : "sbhusalbipinc333@gmail.com, erica.jzq@gmail.com, Rnajibi7@gmail.com, jisoo98kim@gmail.com",
-    "matchReason" : "major, major, college & major, major" },
-  { "mentor"      : "johnmccarthy@berkeley.edu",
-    "mentees"     : "sittpaing@my.smccd.edu, andrademarlenejazmin@gmail.com, Jessimar19963@gmail.com, rarteaga98@outlook.com",
-    "matchReason" : "major, college, major, major" },
-  { "mentor"      : "kkrive@berkeley.edu",
-    "mentees"     : "thaniamartinezmondragon@gmail.com, isselletellez@live.com, Ryanyust5@gmail.com, cchun326@insite.4cd.edu",
-    "matchReason" : "college, college, college & major, major" },
-  { "mentor"      : "klimjoco@berkeley.edu",
-    "mentees"     : "kristianawolfblake@my.smccd.edu, yjinjo@gmail.com, hominluo@berkeley.edu, poojaxkini@gmail.com",
-    "matchReason" : "major, college, college, college" },
-  { "mentor"      : "kevintran@berkeley.edu",
-    "mentees"     : "andrewyoung@my.smccd.edu, jlee548@mail.ccsf.edu, ashneelpratap@my.smccd.edu, anikating@my.smccd.edu",
-    "matchReason" : "major, major, major, major" },
-  { "mentor"      : "kimberlyrios@berkeley.edu",
-    "mentees"     : "benbeck1@gmail.com",
-    "matchReason" : "major" },
-  { "mentor"      : "lexa.gundelach@berkeley.edu",
-    "mentees"     : "zhenyuhongzane@gmail.com, dianetobit@gmail.com, xniu463@insite.4cd.edu, Saneeha98@gmail.com",
-    "matchReason" : "college, college, college, college" },
-  { "mentor"      : "m.tmendez@berkeley.edu",
-    "mentees"     : "krislee1542@gmail.com, n.leeor@gmail.com, del_rio_rhammses_s@student.smc.edu, Ecrist7@gmail.com",
-    "matchReason" : "major, college, major, college" },
-  { "mentor"      : "michaeldunn.77@berkeley.edu",
-    "mentees"     : "jason.hoang0777@my.riohondo.edu, philpierini@berkeley.edu, rylie.rinks@gmail.com, juyiyang@my.smccd.edu",
-    "matchReason" : "major, major, major, major" },
-  { "mentor"      : "muzi1025@berkeley.edu",
-    "mentees"     : "Rachel.dresdner@yahoo.com, vans1313@gmail.com, terwalker@gmail.com, saodatitalmazova@gmail.com",
-    "matchReason" : "major, major, major, major" },
-  { "mentor"      : "natemcwilliams@berkeley.edu",
-    "mentees"     : "johnburright@my.smccd.edu, felero.smith@outlook.com, garcia_cassandra_r01@student.smc.edu, Kevinwingfly@icloud.com",
-    "matchReason" : "major, major, major, major" },
-  { "mentor"      : "angie.to@berkeley.edu",
-    "mentees"     : "jeffynguyen98@gmail.com, ttech80@gmail.com, echamu75@gmail.com, hancocknate24@gmail.com",
-    "matchReason" : "college, college, college, college" },
-  { "mentor"      : "ocampos@berkeley.edu",
-    "mentees"     : "tyw990103@gmail.com, jhy970307@gmail.com",
-    "matchReason" : "major, major" },
-  { "mentor"      : "rebekahahn@berkeley.edu",
-    "mentees"     : "mgjstowe@gmail.com, jessebrowne@gmail.com, clavey.robertson@gmail.com, amber.boyd226@gmail.com",
-    "matchReason" : "college, college, college, college" },
-  { "mentor"      : "rgoveas@berkeley.edu",
-    "mentees"     : "davidcao139@gmail.com",
-    "matchReason" : "college & major" },
-  { "mentor"      : "richard95lee@berkeley.edu",
-    "mentees"     : "rstewart072@insite.4cd.edu, ethankimm9936@gmail.com, misakakutani@gmail.com, dmustafinnn@gmail.com",
-    "matchReason" : "college & major, college, college, college" },
-  { "mentor"      : "samyearaja@berkeley.edu",
-    "mentees"     : "polosetroc@gmail.com, beryltjhoi@gmail.com, zjlinyixuan@gmail.com, tw980819@gmail.com",
-    "matchReason" : "college, college, college, college" },
-  { "mentor"      : "sandraalfaro@berkeley.edu",
-    "mentees"     : "ltburs@gmail.com",
-    "matchReason" : "major" },
-  { "mentor"      : "yeeoo@berkeley.edu",
-    "mentees"     : "mihonamba@my.smccd.edu, michelletam@my.smccd.edu",
-    "matchReason" : "college, college & major" } ]
+[{
+    "mentor": "alipm@berkeley.edu",
+    "mentees": "floreskevin597@gmail.com, jujharkhalsa101@gmail.com, meli.j920@gmail.com",
+    "matchReason": "major, major, major"
+  },
+  {
+    "mentor": "ankhawaunju@berkeley.edu",
+    "mentees": "loretha.henry@gmail.com, younthu@my.smccd.edu, 766486988hu@gmail.com, julie.villanueva88@gmail.com",
+    "matchReason": "college, major, college, college"
+  },
+  {
+    "mentor": "ashley.sandoval@berkeley.edu",
+    "mentees": "Tltbirthservices@gmail.com, gxrmaine@gmail.com, edwinjoelp98@gmail.com, perez.r.jenna@gmail.com",
+    "matchReason": "major, major, major, major"
+  },
+  {
+    "mentor": "austinwang@berkeley.edu",
+    "mentees": "martovalvarez@my.smccd.edu, pauldzul@my.smccd.edu, akashpatel_525@yahoo.co.in, su_kevin@student.smc.edu",
+    "matchReason": "major, major, major, major"
+  },
+  {
+    "mentor": "camerontoy@berkeley.edu",
+    "mentees": "jtan224@insite.4cd.edu",
+    "matchReason": "college"
+  },
+  {
+    "mentor": "cverbera@berkeley.edu",
+    "mentees": "moheatkumar11@gmail.com, param.singh2015@gmail.com, Munoz.angelahmc@gmail.com, cruz_david_benjamin@student.smc.edu",
+    "matchReason": "college, college, college, major"
+  },
+  {
+    "mentor": "chase0718@berkeley.edu",
+    "mentees": "seb.oshagan@gmail.com, ddanielle327@gmail.com, alexis.caviness98@gmail.com, kaur.punamdeep21@gmail.com",
+    "matchReason": "college, college, major, major"
+  },
+  {
+    "mentor": "coreylowe@berkeley.edu",
+    "mentees": "elexisbmendoza@gmail.com, tong.bryant.college@gmail.com, robsolis14@gmail.com, Mursal.Hessami@gmail.com",
+    "matchReason": "college, college & major, college, college & major"
+  },
+  {
+    "mentor": "dkotik@berkeley.edu",
+    "mentees": "altuvenellyana@gmail.com, yajairagarcia@student.hartnell.edu , desicarr34@gmail.com, analabra15@yahoo.com",
+    "matchReason": "major, major, major, major"
+  },
+  {
+    "mentor": "dylan.lee@berkeley.edu",
+    "mentees": "tboykin48@sbcglobal.net, Sergiomaciel@my.smccd.edu, roxascharlene23@yahoo.com, ebustare@zonemail.clpccd.edu",
+    "matchReason": "major, major, major, major"
+  },
+  {
+    "mentor": "fidell",
+    "mentees": "ratthanan.lay@gmail.com, kikixiao0123@gmail.com, tashatinagero@gmail.com, jasonx.067@gmail.com",
+    "matchReason": "college, college, college, college"
+  },
+  {
+    "mentor": "harley.n.simpson@berkeley.edu",
+    "mentees": "brealkim@gmail.com, emysuarez@yahoo.com",
+    "matchReason": "major, major"
+  },
+  {
+    "mentor": "heather.tran@berkeley.edu",
+    "mentees": "eunice971121@gmail.com,  Cquintanilla@gmail.com, s13franco@gmail.com, cmachans@gmail.com",
+    "matchReason": "college, major, major, major"
+  },
+  {
+    "mentor": "hylinn@berkeley.edu",
+    "mentees": "tamarikrabb@my.smccd.edu, vdmrazr@gmail.com, irtaza.97@gmail.com, matildaglau@gmail.com",
+    "matchReason": "major, college, college, college"
+  },
+  {
+    "mentor": "idwyer@berkeley.edu",
+    "mentees": "michaelgaetos@yahoo.com, alvaradomay10@gmail.com, sunjoseph97@gmail.com, dillonmjohnson27@gmail.com",
+    "matchReason": "college, college, college, college"
+  },
+  {
+    "mentor": "iffatjunaid@gmail.com",
+    "mentees": "sierra.thompson.k@gmail.com, tianqian.huang@berkeley.edu, ashley.funaki@gmail.com, soniayau82@gmail.com",
+    "matchReason": "college, college, major, college"
+  },
+  {
+    "mentor": "ikram.magzoub@berkeley.edu",
+    "mentees": "dianaparada@yahoo.com",
+    "matchReason": "college"
+  },
+  {
+    "mentor": "jemal@berkeley.edu",
+    "mentees": "sbhusalbipinc333@gmail.com, erica.jzq@gmail.com, Rnajibi7@gmail.com, jisoo98kim@gmail.com",
+    "matchReason": "major, major, college & major, major"
+  },
+  {
+    "mentor": "johnmccarthy@berkeley.edu",
+    "mentees": "sittpaing@my.smccd.edu, andrademarlenejazmin@gmail.com, Jessimar19963@gmail.com, rarteaga98@outlook.com",
+    "matchReason": "major, college, major, major"
+  },
+  {
+    "mentor": "kkrive@berkeley.edu",
+    "mentees": "thaniamartinezmondragon@gmail.com, isselletellez@live.com, Ryanyust5@gmail.com, cchun326@insite.4cd.edu",
+    "matchReason": "college, college, college & major, major"
+  },
+  {
+    "mentor": "klimjoco@berkeley.edu",
+    "mentees": "kristianawolfblake@my.smccd.edu, yjinjo@gmail.com, hominluo@berkeley.edu, poojaxkini@gmail.com",
+    "matchReason": "major, college, college, college"
+  },
+  {
+    "mentor": "kevintran@berkeley.edu",
+    "mentees": "andrewyoung@my.smccd.edu, jlee548@mail.ccsf.edu, ashneelpratap@my.smccd.edu, anikating@my.smccd.edu",
+    "matchReason": "major, major, major, major"
+  },
+  {
+    "mentor": "kimberlyrios@berkeley.edu",
+    "mentees": "benbeck1@gmail.com",
+    "matchReason": "major"
+  },
+  {
+    "mentor": "lexa.gundelach@berkeley.edu",
+    "mentees": "zhenyuhongzane@gmail.com, dianetobit@gmail.com, xniu463@insite.4cd.edu, Saneeha98@gmail.com",
+    "matchReason": "college, college, college, college"
+  },
+  {
+    "mentor": "m.tmendez@berkeley.edu",
+    "mentees": "krislee1542@gmail.com, n.leeor@gmail.com, del_rio_rhammses_s@student.smc.edu, Ecrist7@gmail.com",
+    "matchReason": "major, college, major, college"
+  },
+  {
+    "mentor": "michaeldunn.77@berkeley.edu",
+    "mentees": "jason.hoang0777@my.riohondo.edu, philpierini@berkeley.edu, rylie.rinks@gmail.com, juyiyang@my.smccd.edu",
+    "matchReason": "major, major, major, major"
+  },
+  {
+    "mentor": "muzi1025@berkeley.edu",
+    "mentees": "Rachel.dresdner@yahoo.com, vans1313@gmail.com, terwalker@gmail.com, saodatitalmazova@gmail.com",
+    "matchReason": "major, major, major, major"
+  },
+  {
+    "mentor": "natemcwilliams@berkeley.edu",
+    "mentees": "johnburright@my.smccd.edu, felero.smith@outlook.com, garcia_cassandra_r01@student.smc.edu, Kevinwingfly@icloud.com",
+    "matchReason": "major, major, major, major"
+  },
+  {
+    "mentor": "angie.to@berkeley.edu",
+    "mentees": "jeffynguyen98@gmail.com, ttech80@gmail.com, echamu75@gmail.com, hancocknate24@gmail.com",
+    "matchReason": "college, college, college, college"
+  },
+  {
+    "mentor": "ocampos@berkeley.edu",
+    "mentees": "tyw990103@gmail.com, jhy970307@gmail.com",
+    "matchReason": "major, major"
+  },
+  {
+    "mentor": "rebekahahn@berkeley.edu",
+    "mentees": "mgjstowe@gmail.com, jessebrowne@gmail.com, clavey.robertson@gmail.com, amber.boyd226@gmail.com",
+    "matchReason": "college, college, college, college"
+  },
+  {
+    "mentor": "rgoveas@berkeley.edu",
+    "mentees": "davidcao139@gmail.com",
+    "matchReason": "college & major"
+  },
+  {
+    "mentor": "richard95lee@berkeley.edu",
+    "mentees": "rstewart072@insite.4cd.edu, ethankimm9936@gmail.com, misakakutani@gmail.com, dmustafinnn@gmail.com",
+    "matchReason": "college & major, college, college, college"
+  },
+  {
+    "mentor": "samyearaja@berkeley.edu",
+    "mentees": "polosetroc@gmail.com, beryltjhoi@gmail.com, zjlinyixuan@gmail.com, tw980819@gmail.com",
+    "matchReason": "college, college, college, college"
+  },
+  {
+    "mentor": "sandraalfaro@berkeley.edu",
+    "mentees": "ltburs@gmail.com",
+    "matchReason": "major"
+  },
+  {
+    "mentor": "yeeoo@berkeley.edu",
+    "mentees": "mihonamba@my.smccd.edu, michelletam@my.smccd.edu",
+    "matchReason": "college, college & major"
+  }
+]
