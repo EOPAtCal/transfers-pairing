@@ -15,7 +15,7 @@ var signoutButton = document.getElementById('signout_button');
 /**
  *  On load, called to load the auth2 library and API client library.
  */
-export default function handleClientLoad() {
+function handleClientLoad() {
   gapi.load('client:auth2', initClient);
 }
 /**
@@ -65,17 +65,7 @@ function handleAuthClick(event) {
 function handleSignoutClick(event) {
   gapi.auth2.getAuthInstance().signOut();
 }
-/**
- * Append a pre element to the body containing the given message
- * as its text node. Used to display the results of the API call.
- *
- * @param {string} message Text to be placed in pre element.
- */
-function appendPre(message) {
-  var pre = document.getElementById('content');
-  var textContent = document.createTextNode(message + '\n');
-  pre.appendChild(textContent);
-}
+
 const selectMentee = user => ({
   name: `${user[2]} ${user[3]} ${user[4]}`,
   email: user[9],
@@ -93,7 +83,7 @@ const selectMentor = user => ({
   get id() {
     return this.email;
   },
-  max: 8
+  max: user[8] || 4
 });
 const menteeDetails = {
   spreadsheetId: '1hYJI9U5R4e1-bOhSdNowPPk-cskxrIX4p3Cqtk29II0',
@@ -153,3 +143,5 @@ function getRows(values, selector) {
   }
   return result;
 }
+
+export default handleClientLoad;
