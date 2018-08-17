@@ -23,7 +23,7 @@ const Main = ({ matches }) => (
       </div>
     </div>
     <div>
-      {matches.map(({ mentor, mentees, matchReason }) => (
+      {matches.map(({ mentor, mentees, reason }) => (
         <div
           key={mentor}
           className="uk-child-width-1-3@s uk-grid-small uk-grid-match uk-card uk-card-default uk-card-hover"
@@ -33,8 +33,8 @@ const Main = ({ matches }) => (
             <li>{mentor}</li>
           </ul>
           <ul className="uk-list uk-list-striped">
-            {mentees.map(mentee => (
-              <li key={mentee}>
+            {mentees.map((mentee, idx) => (
+              <li key={idx}>
                 {mentee}
                 <button uk-icon="copy" />
               </li>
@@ -42,7 +42,7 @@ const Main = ({ matches }) => (
           </ul>
 
           <ul className="uk-list uk-list-striped">
-            {matchReason.map((reason, idx) => (
+            {reason.map((reason, idx) => (
               <li key={idx}>{reason}</li>
             ))}
           </ul>
