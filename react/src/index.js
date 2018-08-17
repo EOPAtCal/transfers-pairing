@@ -30,7 +30,6 @@ class App extends PureComponent {
             <a>major insights</a>
           </li>
         </ul>
-
         <ul className="uk-switcher uk-margin">
           <li>
             <Page matches={matchesSPMP} defaults={defaultsSPMP} />

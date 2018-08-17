@@ -37,7 +37,7 @@ class Options extends PureComponent {
     return (
       <div>
         <h2 className="uk-text-capitalize">options</h2>
-        <h4>Be careful, what you modify here will affect the matches</h4>
+        <h4>Be careful what you modify here will affect the matching</h4>
         <hr className="uk-divider-icon" />
         <form className="uk-text-left uk-form-horizontal">
           <div className="uk-grid-small" uk-grid="">

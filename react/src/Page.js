@@ -3,7 +3,7 @@ import Options from './Options';
 import Main from './Main';
 
 const Page = ({ matches, defaults }) => (
-  <div className="uk-container uk-text-center">
+  <div className="uk-container">
     <div>
       <ul className="uk-subnav uk-subnav-pill" uk-switcher="">
         <li>

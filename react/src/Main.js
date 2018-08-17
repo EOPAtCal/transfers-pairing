@@ -2,7 +2,7 @@ import React from 'react';
 
 const Main = ({ matches }) => (
   <div>
-    <div className="uk-margin">
+    <div className="uk-margin uk-text-center">
       <button className="uk-button uk-button-danger uk-button-large">
         Match
       </button>
@@ -26,13 +26,13 @@ const Main = ({ matches }) => (
       {matches.map(({ mentor, mentees, reason }) => (
         <div
           key={mentor}
-          className="uk-child-width-1-3@s uk-grid-small uk-grid-match uk-card uk-card-default uk-card-hover"
+          className="uk-child-width-1-3@s uk-grid-small uk-grid-match uk-card uk-card-default uk-card-small uk-card-body uk-card-hover"
           uk-grid=""
         >
-          <ul className="uk-list">
+          <ul className="uk-list uk-list-divider">
             <li>{mentor}</li>
           </ul>
-          <ul className="uk-list uk-list-striped">
+          <ul className="uk-list uk-list-divider">
             {mentees.map((mentee, idx) => (
               <li key={idx}>
                 {mentee}
@@ -41,7 +41,7 @@ const Main = ({ matches }) => (
             ))}
           </ul>
 
-          <ul className="uk-list uk-list-striped">
+          <ul className="uk-list uk-list-divider">
             {reason.map((reason, idx) => (
               <li key={idx}>{reason}</li>
             ))}
