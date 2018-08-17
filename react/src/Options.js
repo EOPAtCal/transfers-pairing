@@ -12,9 +12,11 @@ class Options extends PureComponent {
   };
 
   handleResetAllToDefaults = () => {
-    this.setState({
-      ...this.props.defaults
-    });
+    if (window.confirm('Are you sure?')) {
+      this.setState({
+        ...this.props.defaults
+      });
+    }
   };
 
   render() {

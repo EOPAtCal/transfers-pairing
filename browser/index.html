@@ -180,9 +180,7 @@
         })
         const unmatchedMentors = []
         removeUnpaired(matches, unmatchedMentors)
-        selectPairs(matches).forEach(pair => {
-          appendPre(JSON.stringify(pair))
-        })
+        appendPre(JSON.stringify(selectPairs(matches)))
         appendPre('\nunmatched mentors:')
         unmatchedMentors.forEach(mentor => {
           appendPre(mentor)
@@ -205,8 +203,8 @@
         for (const mentorId in matches) {
           results.push({
             mentor: mentorId,
-            mentees: prettify(matches[mentorId].mentees, "id"),
-            reason: prettify(matches[mentorId].reasons)
+            mentees: matches[mentorId].mentees.map(m => m.id),
+            reason: matches[mentorId].reasons
           })
         }
         return results;

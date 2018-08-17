@@ -33,7 +33,7 @@ const Main = ({ matches }) => (
             <li>{mentor}</li>
           </ul>
           <ul className="uk-list uk-list-striped">
-            {mentees.split(',').map(mentee => (
+            {mentees.map(mentee => (
               <li key={mentee}>
                 {mentee}
                 <button uk-icon="copy" />
@@ -42,7 +42,7 @@ const Main = ({ matches }) => (
           </ul>
 
           <ul className="uk-list uk-list-striped">
-            {matchReason.split(',').map((reason, idx) => (
+            {matchReason.map((reason, idx) => (
               <li key={idx}>{reason}</li>
             ))}
           </ul>
