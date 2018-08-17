@@ -106,4 +106,6 @@ function match({ mentees, mentors }) {
   };
 }
 
+// function randomMatch({ mentees, mentors }) {}
+
 export default match;
