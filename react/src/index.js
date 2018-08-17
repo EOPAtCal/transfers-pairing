@@ -4,18 +4,18 @@ import 'uikit/dist/css/uikit.min.css';
 import UIkit from 'uikit';
 import Icons from 'uikit/dist/js/uikit-icons';
 import Page from './Page';
+import matches from './matches';
 
 UIkit.use(Icons);
 window.UIkit = UIkit;
 
 class App extends PureComponent {
   state = {
-    matches1: [],
-    matches2: []
+    matches: matches
   };
 
   render() {
-    const { matches1, matches2 } = this.state;
+    const { matches } = this.state;
     return (
       <div>
         <ul className="uk-subnav uk-subnav-pill uk-flex-center" uk-switcher="">
@@ -29,10 +29,10 @@ class App extends PureComponent {
 
         <ul className="uk-switcher uk-margin">
           <li>
-            <Page matches={matches1} />
+            <Page matches={matches} />
           </li>
           <li>
-            <Page matches={matches2} />
+            <Page matches={matches} />
           </li>
         </ul>
       </div>

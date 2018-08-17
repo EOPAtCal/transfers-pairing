@@ -7,7 +7,6 @@ class Options extends PureComponent {
   handleChange = event => {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    console.log(target.name, value);
     this.setState({
       [target.name]: value
     });
@@ -86,28 +85,13 @@ class Options extends PureComponent {
 
                 <div className="uk-margin">
                   <label className="uk-form-label" htmlFor="form-stacked-text">
-                    name
-                  </label>
-                  <div className="uk-form-controls">
-                    <input
-                      name="spmpMentorName"
-                      className="uk-input uk-form-width-small"
-                      type="text"
-                      required
-                      value={spmpMentorName}
-                      onChange={this.handleChange}
-                    />
-                  </div>
-                </div>
-                <div className="uk-margin">
-                  <label className="uk-form-label" htmlFor="form-stacked-text">
                     email
                   </label>
                   <div className="uk-form-controls">
                     <input
                       name="spmpMentorEmail"
                       className="uk-input uk-form-width-small"
-                      type="text"
+                      type="number"
                       required
                       value={spmpMentorEmail}
                       onChange={this.handleChange}
@@ -122,7 +106,7 @@ class Options extends PureComponent {
                     <input
                       name="spmpMentorCollege"
                       className="uk-input uk-form-width-small"
-                      type="text"
+                      type="number"
                       required
                       value={spmpMentorCollege}
                       onChange={this.handleChange}
@@ -137,7 +121,7 @@ class Options extends PureComponent {
                     <input
                       name="spmpMentorMajor"
                       className="uk-input uk-form-width-small"
-                      type="text"
+                      type="number"
                       required
                       value={spmpMentorMajor}
                       onChange={this.handleChange}
@@ -189,28 +173,13 @@ class Options extends PureComponent {
 
                 <div className="uk-margin">
                   <label className="uk-form-label" htmlFor="form-stacked-text">
-                    name
-                  </label>
-                  <div className="uk-form-controls">
-                    <input
-                      name="spmpMenteeName"
-                      className="uk-input uk-form-width-small"
-                      type="text"
-                      required
-                      value={spmpMenteeName}
-                      onChange={this.handleChange}
-                    />
-                  </div>
-                </div>
-                <div className="uk-margin">
-                  <label className="uk-form-label" htmlFor="form-stacked-text">
                     email
                   </label>
                   <div className="uk-form-controls">
                     <input
                       name="spmpMenteeEmail"
                       className="uk-input uk-form-width-small"
-                      type="text"
+                      type="number"
                       required
                       value={spmpMenteeEmail}
                       onChange={this.handleChange}
@@ -225,7 +194,7 @@ class Options extends PureComponent {
                     <input
                       name="spmpMenteeCollege"
                       className="uk-input uk-form-width-small"
-                      type="text"
+                      type="number"
                       required
                       value={spmpMenteeCollege}
                       onChange={this.handleChange}
@@ -240,7 +209,7 @@ class Options extends PureComponent {
                     <input
                       name="spmpMenteeMajor"
                       className="uk-input uk-form-width-small"
-                      type="text"
+                      type="number"
                       required
                       value={spmpMenteeMajor}
                       onChange={this.handleChange}
