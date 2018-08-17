@@ -6,6 +6,8 @@ import Icons from 'uikit/dist/js/uikit-icons';
 import Page from './Page';
 import matchesSPMP from './data/matchesSPMP.json';
 import matchesMI from './data/matchesMI.json';
+import defaultsSPMP from './data/defaultsSPMP.json';
+import defaultsMI from './data/defaultsMI.json';
 
 UIkit.use(Icons);
 window.UIkit = UIkit;
@@ -31,10 +33,10 @@ class App extends PureComponent {
 
         <ul className="uk-switcher uk-margin">
           <li>
-            <Page matches={matchesSPMP} />
+            <Page matches={matchesSPMP} defaults={defaultsSPMP} />
           </li>
           <li>
-            <Page matches={matchesMI} />
+            <Page matches={matchesMI} defaults={defaultsMI} />
           </li>
         </ul>
       </div>

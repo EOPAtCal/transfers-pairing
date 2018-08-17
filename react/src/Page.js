@@ -2,7 +2,7 @@ import React from 'react';
 import Options from './Options';
 import Main from './Main';
 
-const Page = ({ matches }) => (
+const Page = ({ matches, defaults }) => (
   <div className="uk-container uk-text-center">
     <div>
       <ul className="uk-subnav uk-subnav-pill" uk-switcher="">
@@ -19,7 +19,7 @@ const Page = ({ matches }) => (
           <Main matches={matches} />
         </li>
         <li>
-          <Options />
+          <Options defaults={defaults} />
         </li>
       </ul>
     </div>

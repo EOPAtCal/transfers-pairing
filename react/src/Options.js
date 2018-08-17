@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react';
-import defaultsSPMP from './data/defaultsSPMP.json';
 
 class Options extends PureComponent {
-  state = defaultsSPMP;
+  state = this.props.defaults;
 
   handleChange = event => {
     const target = event.target;
@@ -14,26 +13,24 @@ class Options extends PureComponent {
 
   handleResetAllToDefaults = () => {
     this.setState({
-      ...defaultsSPMP
+      ...this.props.defaults
     });
   };
 
   render() {
     const {
-      spmpMentorSpreadsheetId,
-      spmpMentorRange,
-      spmpMentorName,
-      spmpMentorEmail,
-      spmpMentorCollege,
-      spmpMentorMajor,
+      mentorSpreadsheetId,
+      mentorRange,
+      mentorEmail,
+      mentorCollege,
+      mentorMajor,
       matchByMajors,
       matchByColleges,
-      spmpMenteeSpreadsheetId,
-      spmpMenteeRange,
-      spmpMenteeName,
-      spmpMenteeEmail,
-      spmpMenteeCollege,
-      spmpMenteeMajor
+      menteeSpreadsheetId,
+      menteeRange,
+      menteeEmail,
+      menteeCollege,
+      menteeMajor
     } = this.state;
     return (
       <div>
@@ -53,11 +50,11 @@ class Options extends PureComponent {
                   </label>
                   <div className="uk-form-controls">
                     <input
-                      name="spmpMentorSpreadsheetId"
+                      name="mentorSpreadsheetId"
                       className="uk-input uk-form-width-small"
                       type="text"
                       required
-                      value={spmpMentorSpreadsheetId}
+                      value={mentorSpreadsheetId}
                       onChange={this.handleChange}
                     />
                   </div>
@@ -68,11 +65,11 @@ class Options extends PureComponent {
                   </label>
                   <div className="uk-form-controls">
                     <input
-                      name="spmpMentorRange"
+                      name="mentorRange"
                       className="uk-input uk-form-width-small"
                       type="text"
                       required
-                      value={spmpMentorRange}
+                      value={mentorRange}
                       onChange={this.handleChange}
                     />
                   </div>
@@ -89,11 +86,11 @@ class Options extends PureComponent {
                   </label>
                   <div className="uk-form-controls">
                     <input
-                      name="spmpMentorEmail"
+                      name="mentorEmail"
                       className="uk-input uk-form-width-small"
                       type="number"
                       required
-                      value={spmpMentorEmail}
+                      value={mentorEmail}
                       onChange={this.handleChange}
                     />
                   </div>
@@ -104,11 +101,11 @@ class Options extends PureComponent {
                   </label>
                   <div className="uk-form-controls">
                     <input
-                      name="spmpMentorCollege"
+                      name="mentorCollege"
                       className="uk-input uk-form-width-small"
                       type="number"
                       required
-                      value={spmpMentorCollege}
+                      value={mentorCollege}
                       onChange={this.handleChange}
                     />
                   </div>
@@ -119,11 +116,11 @@ class Options extends PureComponent {
                   </label>
                   <div className="uk-form-controls">
                     <input
-                      name="spmpMentorMajor"
+                      name="mentorMajor"
                       className="uk-input uk-form-width-small"
                       type="number"
                       required
-                      value={spmpMentorMajor}
+                      value={mentorMajor}
                       onChange={this.handleChange}
                     />
                   </div>
@@ -141,11 +138,11 @@ class Options extends PureComponent {
                   </label>
                   <div className="uk-form-controls">
                     <input
-                      name="spmpMenteeSpreadsheetId"
+                      name="menteeSpreadsheetId"
                       className="uk-input uk-form-width-small"
                       type="text"
                       required
-                      value={spmpMenteeSpreadsheetId}
+                      value={menteeSpreadsheetId}
                       onChange={this.handleChange}
                     />
                   </div>
@@ -156,11 +153,11 @@ class Options extends PureComponent {
                   </label>
                   <div className="uk-form-controls">
                     <input
-                      name="spmpMenteeRange"
+                      name="menteeRange"
                       className="uk-input uk-form-width-small"
                       type="text"
                       required
-                      value={spmpMenteeRange}
+                      value={menteeRange}
                       onChange={this.handleChange}
                     />
                   </div>
@@ -177,11 +174,11 @@ class Options extends PureComponent {
                   </label>
                   <div className="uk-form-controls">
                     <input
-                      name="spmpMenteeEmail"
+                      name="menteeEmail"
                       className="uk-input uk-form-width-small"
                       type="number"
                       required
-                      value={spmpMenteeEmail}
+                      value={menteeEmail}
                       onChange={this.handleChange}
                     />
                   </div>
@@ -192,11 +189,11 @@ class Options extends PureComponent {
                   </label>
                   <div className="uk-form-controls">
                     <input
-                      name="spmpMenteeCollege"
+                      name="menteeCollege"
                       className="uk-input uk-form-width-small"
                       type="number"
                       required
-                      value={spmpMenteeCollege}
+                      value={menteeCollege}
                       onChange={this.handleChange}
                     />
                   </div>
@@ -207,11 +204,11 @@ class Options extends PureComponent {
                   </label>
                   <div className="uk-form-controls">
                     <input
-                      name="spmpMenteeMajor"
+                      name="menteeMajor"
                       className="uk-input uk-form-width-small"
                       type="number"
                       required
-                      value={spmpMenteeMajor}
+                      value={menteeMajor}
                       onChange={this.handleChange}
                     />
                   </div>

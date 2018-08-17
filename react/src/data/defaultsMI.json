@@ -1,14 +1,14 @@
 {
-  "spmpMentorSpreadsheetId": "18zmzgEI6DzS-r_GRr9SuE5OSk6fIE2RWuJb7AJv8AgE",
-  "spmpMentorRange": "A2:I47",
-  "spmpMentorEmail": 2,
-  "spmpMentorCollege": 5,
-  "spmpMentorMajor": 4,
+  "mentorSpreadsheetId": "18zmzgEI6DzS-r_GRr9SuE5OSk6fIE2RWuJb7AJv8AgE",
+  "mentorRange": "A2:I47",
+  "mentorEmail": 2,
+  "mentorCollege": 5,
+  "mentorMajor": 4,
   "matchByMajors": true,
-  "matchByColleges": true,
-  "spmpMenteeSpreadsheetId": "1hYJI9U5R4e1-bOhSdNowPPk-cskxrIX4p3Cqtk29II0",
-  "spmpMenteeRange": "A2:AI376",
-  "spmpMenteeEmail": 9,
-  "spmpMenteeCollege": 11,
-  "spmpMenteeMajor": 13
+  "matchByColleges": false,
+  "menteeSpreadsheetId": "1hYJI9U5R4e1-bOhSdNowPPk-cskxrIX4p3Cqtk29II0",
+  "menteeRange": "A2:AI376",
+  "menteeEmail": 9,
+  "menteeCollege": 11,
+  "menteeMajor": 13
 }
