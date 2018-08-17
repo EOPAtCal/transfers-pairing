@@ -22,7 +22,8 @@ const Main = ({ matches }) => (
         <div
           key={mentor}
           class="uk-child-width-1-3@s uk-grid-small uk-grid-match uk-card uk-card-default uk-card-hover"
-          uk-grid="">
+          uk-grid=""
+        >
           <ul class="uk-list">
             <li>{mentor}</li>
           </ul>
@@ -30,13 +31,15 @@ const Main = ({ matches }) => (
             {mentees.split(',').map(mentee => (
               <li>
                 {mentee}
-                <a uk-icon="copy" />
+                <button uk-icon="copy" />
               </li>
             ))}
           </ul>
 
           <ul class="uk-list uk-list-striped">
-            {matchReason.split(',').map(reason => <li>{reason}</li>)}
+            {matchReason.split(',').map(reason => (
+              <li>{reason}</li>
+            ))}
           </ul>
         </div>
       ))}

@@ -20,10 +20,10 @@ class App extends PureComponent {
       <div>
         <ul class="uk-subnav uk-subnav-pill uk-flex-center" uk-switcher="">
           <li>
-            <a href="#">starting point mentorship program</a>
+            <a>starting point mentorship program</a>
           </li>
           <li>
-            <a href="#">major insights</a>
+            <a>major insights</a>
           </li>
         </ul>
 

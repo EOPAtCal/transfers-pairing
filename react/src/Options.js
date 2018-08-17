@@ -31,7 +31,7 @@ class Options extends PureComponent {
                   </label>
                   <div class="uk-form-controls">
                     <input
-                      name="spmp-mspreadsheetId"
+                      name="spmp-mentor-spreadsheetId"
                       class="uk-input uk-form-width-small"
                       type="text"
                       required
@@ -63,7 +63,7 @@ class Options extends PureComponent {
                   </label>
                   <div class="uk-form-controls">
                     <input
-                      name="spmp-mname"
+                      name="spmp-mentor-name"
                       class="uk-input uk-form-width-small"
                       type="text"
                       required
@@ -76,7 +76,7 @@ class Options extends PureComponent {
                   </label>
                   <div class="uk-form-controls">
                     <input
-                      name="spmp-memail"
+                      name="spmp-mentor-email"
                       class="uk-input uk-form-width-small"
                       type="email"
                       required
@@ -89,7 +89,7 @@ class Options extends PureComponent {
                   </label>
                   <div class="uk-form-controls">
                     <input
-                      name="spmp-mcollege"
+                      name="spmp-mentor-college"
                       class="uk-input uk-form-width-small"
                       type="text"
                     />
@@ -101,7 +101,7 @@ class Options extends PureComponent {
                   </label>
                   <div class="uk-form-controls">
                     <input
-                      name="spmp-mmajor"
+                      name="spmp-mentor-major"
                       class="uk-input uk-form-width-small"
                       type="text"
                     />
@@ -120,6 +120,7 @@ class Options extends PureComponent {
                   </label>
                   <div class="uk-form-controls">
                     <input
+                      name="spmp-mentee-xxx"
                       class="uk-input uk-form-width-small"
                       type="text"
                       required
@@ -132,6 +133,7 @@ class Options extends PureComponent {
                   </label>
                   <div class="uk-form-controls">
                     <input
+                      name="spmp-mentee-xxx"
                       class="uk-input uk-form-width-small"
                       type="text"
                       required
@@ -150,6 +152,7 @@ class Options extends PureComponent {
                   </label>
                   <div class="uk-form-controls">
                     <input
+                      name="spmp-mentee-xxx"
                       class="uk-input uk-form-width-small"
                       type="text"
                       required
@@ -162,6 +165,7 @@ class Options extends PureComponent {
                   </label>
                   <div class="uk-form-controls">
                     <input
+                      name="spmp-mentee-xxx"
                       class="uk-input uk-form-width-small"
                       type="email"
                       required
@@ -173,7 +177,11 @@ class Options extends PureComponent {
                     college
                   </label>
                   <div class="uk-form-controls">
-                    <input class="uk-input uk-form-width-small" type="text" />
+                    <input
+                      name="spmp-mentee-xxx"
+                      class="uk-input uk-form-width-small"
+                      type="text"
+                    />
                   </div>
                 </div>
                 <div class="uk-margin">
@@ -181,7 +189,11 @@ class Options extends PureComponent {
                     major
                   </label>
                   <div class="uk-form-controls">
-                    <input class="uk-input uk-form-width-small" type="text" />
+                    <input
+                      name="spmp-mentee-xxx"
+                      class="uk-input uk-form-width-small"
+                      type="text"
+                    />
                   </div>
                 </div>
               </fieldset>
@@ -191,20 +203,35 @@ class Options extends PureComponent {
             <legend class="uk-legend uk-text-capitalize">match criteria</legend>
             <div class="uk-margin">
               <label>
-                <input class="uk-checkbox" type="checkbox" checked /> match by
-                majors
+                <input
+                  name="match-by-majors"
+                  class="uk-checkbox"
+                  type="checkbox"
+                  checked
+                />
+                match by majors
               </label>
             </div>
             <div class="uk-margin">
               <label>
-                <input class="uk-checkbox" type="checkbox" checked /> match by
-                colleges
+                <input
+                  name="match-by-colleges"
+                  class="uk-checkbox"
+                  type="checkbox"
+                  checked
+                />
+                match by colleges
               </label>
             </div>
             <div class="uk-margin" hidden>
               <label>
-                <input class="uk-checkbox" type="checkbox" checked /> randomly
-                match all unmatched
+                <input
+                  name="resel-all"
+                  class="uk-checkbox"
+                  type="checkbox"
+                  checked
+                />
+                randomly match all unmatched
               </label>
             </div>
           </fieldset>
