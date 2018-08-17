@@ -4,8 +4,9 @@ import 'uikit/dist/css/uikit.min.css';
 import UIkit from 'uikit';
 import Icons from 'uikit/dist/js/uikit-icons';
 import Page from './components/Page';
-import matchesSPMP from './data/matchesSPMP.json';
-import matchesMI from './data/matchesMI.json';
+import handleClientLoad from './api';
+// import matchesSPMP from './data/matchesSPMP.json';
+// import matchesMI from './data/matchesMI.json';
 import defaultsSPMP from './data/defaultsSPMP.json';
 import defaultsMI from './data/defaultsMI.json';
 
@@ -14,10 +15,36 @@ window.UIkit = UIkit;
 
 class App extends PureComponent {
   state = {
-    matchesMI,
-    matchesSPMP
+    matchesMI: [],
+    matchesSPMP: [],
+    unmatchedMenteesMI: [],
+    unmatchedMenteesSPMP: [],
+    unmatchedMentorsMI: [],
+    unmatchedMentorsSPMP: []
   };
 
+  componentWillMount() {
+    const {
+      matches: matchesSPMP,
+      unmatchedMentees: unmatchedMenteesSPMP,
+      unmatchedMentors: unmatchedMentorsSPMP
+    } = handleClientLoad(defaultsSPMP);
+
+    const {
+      matches: matchesMI,
+      unmatchedMentees: unmatchedMenteesMI,
+      unmatchedMentors: unmatchedMentorsMI
+    } = handleClientLoad(defaultsMI);
+
+    this.setState({
+      matchesMI,
+      matchesSPMP,
+      unmatchedMenteesMI,
+      unmatchedMenteesSPMP,
+      unmatchedMentorsMI,
+      unmatchedMentorsSPMP
+    });
+  }
   render() {
     const { matchesMI, matchesSPMP } = this.state;
     return (
