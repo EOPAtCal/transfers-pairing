@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
-import defaults from './defaults';
+import defaultsSPMP from './data/defaultsSPMP.json';
 
 class Options extends PureComponent {
-  state = defaults;
+  state = defaultsSPMP;
 
   handleChange = event => {
     const target = event.target;
@@ -14,7 +14,7 @@ class Options extends PureComponent {
 
   handleResetAllToDefaults = () => {
     this.setState({
-      ...defaults
+      ...defaultsSPMP
     });
   };
 
