@@ -152,20 +152,21 @@ async function getRows(values, selector) {
 const gapi = window.gapi;
 let options;
 let matches, unmatchedMentees, unmatchedMentors;
+
 /**
  *  On load, called to load the auth2 library and API client library.
  */
-function handleClientLoad(o) {
-  options = o;
-  gapi.load('client:auth2', initClient);
-  return {
-    matches,
-    unmatchedMentees,
-    unmatchedMentors
-  };
-}
+// function handleClientLoad(o) {
+//   options = o;
+//   gapi.load('client:auth2', initClient);
+//   return {
+//     matches,
+//     unmatchedMentees,
+//     unmatchedMentors
+//   };
+// }
 
-function handleClientLoad2(o, callback) {
+function handleClientLoad(o, callback) {
   options = o;
   gapi.load('client:auth2', initClient);
   callback({
