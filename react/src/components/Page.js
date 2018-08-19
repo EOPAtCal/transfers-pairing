@@ -2,7 +2,12 @@ import React from 'react';
 import Options from './Options';
 import Main from './Main';
 
-const Page = ({ matches, defaults }) => (
+const Page = ({
+  matches,
+  options,
+  handleChangeOptions,
+  handleResetAllToDefaults
+}) => (
   <div className="uk-container">
     <div>
       <ul className="uk-subnav uk-subnav-pill" uk-switcher="">
@@ -16,10 +21,18 @@ const Page = ({ matches, defaults }) => (
 
       <ul className="uk-switcher uk-margin">
         <li>
-          <Main matches={matches} />
+          <Main
+            matches={matches}
+            handleChangeOptions={handleChangeOptions}
+            handleResetAllToDefaults={handleResetAllToDefaults}
+          />
         </li>
         <li>
-          <Options defaults={defaults} />
+          <Options
+            options={options}
+            handleChangeOptions={handleChangeOptions}
+            handleResetAllToDefaults={handleResetAllToDefaults}
+          />
         </li>
       </ul>
     </div>

@@ -5,11 +5,8 @@ import UIkit from 'uikit';
 import Icons from 'uikit/dist/js/uikit-icons';
 import Page from './components/Page';
 import handleClientLoad from './api';
-import defaultsSPMP from './data/defaultsSPMP.json';
-import defaultsMI from './data/defaultsMI.json';
-
-UIkit.use(Icons);
-window.UIkit = UIkit;
+import defaultsSPMP from './defaults/defaultsSPMP.json';
+import defaultsMI from './defaults/defaultsMI.json';
 
 class App extends PureComponent {
   state = {
@@ -19,15 +16,26 @@ class App extends PureComponent {
     unmatchedMenteesSPMP: [],
     unmatchedMentorsMI: [],
     unmatchedMentorsSPMP: [],
-    optionsSPMP: defaultsSPMP,
-    optionsMI: defaultsMI
+    optionsSPMP: { key: 'SPMP', value: defaultsSPMP },
+    optionsMI: { key: 'MI', value: defaultsMI }
   };
 
-  handleChangeOptions(options) {
+  handleChangeOptions(key, value) {
     this.setState({
-      ...options
+      [`options${key}`]: { key, value }
     });
   }
+
+  handleResetAllToDefaults = key => {
+    if (window.confirm('Are you sure?')) {
+      this.setState({
+        [`options${key}`]:
+          key === 'SPMP'
+            ? { key, value: defaultsSPMP }
+            : { key, value: defaultsMI }
+      });
+    }
+  };
 
   async fetch() {
     const { optionsSPMP, optionsMI } = this.state;
@@ -37,7 +45,13 @@ class App extends PureComponent {
     ]);
   }
 
+  loadUIKit() {
+    UIkit.use(Icons);
+    window.UIkit = UIkit;
+  }
+
   async componentDidMount() {
+    this.loadUIKit();
     const script = document.createElement('script');
     script.src = 'https://apis.google.com/js/api.js';
     script.async = true;
@@ -68,7 +82,12 @@ class App extends PureComponent {
   }
 
   render() {
-    const { matchesMI = [], matchesSPMP = [] } = this.state;
+    const {
+      matchesMI = [],
+      matchesSPMP = [],
+      optionsSPMP,
+      optionsMI
+    } = this.state;
     return (
       <div className="uk-section uk-section-small uk-section-muted">
         <div className="uk-container">
@@ -92,10 +111,20 @@ class App extends PureComponent {
           </ul>
           <ul className="uk-switcher uk-margin">
             <li>
-              <Page matches={matchesSPMP} defaults={defaultsSPMP} />
+              <Page
+                matches={matchesSPMP}
+                options={optionsSPMP}
+                handleChangeOptions={this.handleChangeOptions}
+                handleResetAllToDefaults={this.handleResetAllToDefaults}
+              />
             </li>
             <li>
-              <Page matches={matchesMI} defaults={defaultsMI} />
+              <Page
+                matches={matchesMI}
+                options={optionsMI}
+                handleChangeOptions={this.handleChangeOptions}
+                handleResetAllToDefaults={this.handleResetAllToDefaults}
+              />
             </li>
           </ul>
         </div>

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 
 class Options extends PureComponent {
-  state = this.props.defaults;
+  state = { options: this.props.options.value };
 
   handleChange = event => {
     const target = event.target;
@@ -11,12 +11,9 @@ class Options extends PureComponent {
     });
   };
 
-  handleResetAllToDefaults = () => {
-    if (window.confirm('Are you sure?')) {
-      this.setState({
-        ...this.props.defaults
-      });
-    }
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.handleChangeOptions(this.props.options.key, this.state.options);
   };
 
   render() {
@@ -39,7 +36,10 @@ class Options extends PureComponent {
         <h2 className="uk-text-capitalize">options</h2>
         <h4>Be careful: what you modify here will affect matching</h4>
         <hr className="uk-divider-icon" />
-        <form className="uk-text-left uk-form-horizontal">
+        <form
+          className="uk-text-left uk-form-horizontal"
+          onSubmit={this.handleSubmit}
+        >
           <div className="uk-grid-small" uk-grid="">
             <div className="uk-width-1-2@s">
               <fieldset className="uk-fieldset">
@@ -246,26 +246,23 @@ class Options extends PureComponent {
                 match by colleges
               </label>
             </div>
-            {/* <div className="uk-margin">
-              <label>
-                <input
-                  name="random"
-                  className="uk-checkbox"
-                  type="checkbox"
-                  checked
-                />
-                randomly match all unmatched
-              </label>
-            </div> */}
           </fieldset>
-
-          <div className="uk-margin">
-            <button
-              className="uk-button uk-button-default"
-              onClick={this.handleResetAllToDefaults}
-            >
-              reset all to defaults
-            </button>
+          <div className="uk-grid-small" uk-grid="">
+            <div className="uk-width-1-2@s">
+              <button
+                className="uk-button uk-button-default"
+                onClick={this.handleResetAllToDefaults}
+              >
+                reset all to defaults
+              </button>
+            </div>
+            <div className="uk-width-1-2@s">
+              <input
+                className="uk-button uk-button-primary"
+                type="submit"
+                value="Save Changes"
+              />
+            </div>
           </div>
         </form>
       </div>
