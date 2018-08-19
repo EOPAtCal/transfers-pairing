@@ -1,5 +1,4 @@
 import match from './match';
-
 // Client ID and API key from the Developer Console
 var CLIENT_ID =
   '189506913922-3lr5j6kj5gr173gh59uh6sm6476mir21.apps.googleusercontent.com';
@@ -41,17 +40,15 @@ function handleSignoutClick(event) {
   gapi.auth2.getAuthInstance().signOut();
 }
 
-function selectMentee(user) {
-  return new Promise(resolve => {
-    resolve({
-      email: user[options.menteeEmail],
-      college: user[options.menteeCollege],
-      major: user[options.menteeMajor],
-      get id() {
-        return this.email;
-      }
-    });
-  });
+async function selectMentee(user) {
+  return await {
+    email: user[options.menteeEmail],
+    college: user[options.menteeCollege],
+    major: user[options.menteeMajor],
+    get id() {
+      return this.email;
+    }
+  };
 }
 
 function selectMentor(user) {
@@ -147,7 +144,6 @@ function handleClientLoad(o) {
           ).then(() => {
             authorizeButton.onclick = handleAuthClick;
             signoutButton.onclick = handleSignoutClick;
-
             resolve({
               matches,
               unmatchedMentees,
