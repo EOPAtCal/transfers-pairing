@@ -15,27 +15,6 @@ var authorizeButton = document.getElementById('authorize_button');
 var signoutButton = document.getElementById('signout_button');
 
 /**
- *  Initializes the API client library and sets up sign-in state
- *  listeners.
- */
-function initClient() {
-  gapi.client
-    .init({
-      apiKey: API_KEY,
-      clientId: CLIENT_ID,
-      discoveryDocs: DISCOVERY_DOCS,
-      scope: SCOPES
-    })
-    .then(function() {
-      // Listen for sign-in state changes.
-      gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
-      // Handle the initial sign-in state.
-      updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-      authorizeButton.onclick = handleAuthClick;
-      signoutButton.onclick = handleSignoutClick;
-    });
-}
-/**
  *  Called when the signed in status changes, to update the UI
  *  appropriately. After a sign-in, the API is called.
  */
@@ -63,59 +42,49 @@ function handleSignoutClick(event) {
 }
 
 function selectMentee(user) {
-  return new Promise((resolve, reject) => {
-    if (options) {
-      resolve({
-        email: user[options.menteeEmail],
-        college: user[options.menteeCollege],
-        major: user[options.menteeMajor],
-        get id() {
-          return this.email;
-        }
-      });
-    } else {
-      reject(`Error finding defaults`);
-    }
+  return new Promise(resolve => {
+    resolve({
+      email: user[options.menteeEmail],
+      college: user[options.menteeCollege],
+      major: user[options.menteeMajor],
+      get id() {
+        return this.email;
+      }
+    });
   });
 }
 
 function selectMentor(user) {
-  return new Promise((resolve, reject) => {
-    if (options) {
-      resolve({
-        email: user[options.mentorEmail],
-        college: user[options.mentorCollege],
-        major: user[options.mentorMajor],
-        get id() {
-          return this.email;
-        }
-      });
-    } else {
-      reject(`Error finding defaults`);
-    }
+  return new Promise(resolve => {
+    resolve({
+      email: user[options.mentorEmail],
+      college: user[options.mentorCollege],
+      major: user[options.mentorMajor],
+      get id() {
+        return this.email;
+      }
+    });
   });
 }
 
-function initMatch() {
-  fetchData({
+async function initMatch() {
+  const mentors = await fetchData({
     spreadsheetId: options.mentorSpreadsheetId,
     range: options.mentorRange,
     selector: selectMentor
-  }).then(mentors => {
-    fetchData({
-      spreadsheetId: options.menteeSpreadsheetId,
-      range: options.menteeRange,
-      selector: selectMentee
-    }).then(mentees => {
-      const matchResults = match({
-        mentors,
-        mentees
-      });
-      matches = matchResults.matches;
-      unmatchedMentees = matchResults.unmatchedMentees;
-      unmatchedMentors = matchResults.unmatchedMentors;
-    });
   });
+  const mentees = await fetchData({
+    spreadsheetId: options.menteeSpreadsheetId,
+    range: options.menteeRange,
+    selector: selectMentee
+  });
+  const matchResults = match({
+    mentors,
+    mentees
+  });
+  matches = matchResults.matches;
+  unmatchedMentees = matchResults.unmatchedMentees;
+  unmatchedMentors = matchResults.unmatchedMentors;
 }
 
 function fetchData({ spreadsheetId, range, selector }) {
@@ -155,24 +124,38 @@ let matches, unmatchedMentees, unmatchedMentors;
 
 /**
  *  On load, called to load the auth2 library and API client library.
+ *  Initializes the API client library and sets up sign-in state
+ *  listeners.
  */
-// function handleClientLoad(o) {
-//   options = o;
-//   gapi.load('client:auth2', initClient);
-//   return {
-//     matches,
-//     unmatchedMentees,
-//     unmatchedMentors
-//   };
-// }
+function handleClientLoad(o) {
+  return new Promise(resolve => {
+    options = o;
+    gapi.load('client:auth2', () => {
+      gapi.client
+        .init({
+          apiKey: API_KEY,
+          clientId: CLIENT_ID,
+          discoveryDocs: DISCOVERY_DOCS,
+          scope: SCOPES
+        })
+        .then(function() {
+          // Listen for sign-in state changes.
+          gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+          // Handle the initial sign-in state.
+          updateSigninStatus(
+            gapi.auth2.getAuthInstance().isSignedIn.get()
+          ).then(() => {
+            authorizeButton.onclick = handleAuthClick;
+            signoutButton.onclick = handleSignoutClick;
 
-function handleClientLoad(o, callback) {
-  options = o;
-  gapi.load('client:auth2', initClient);
-  callback({
-    matches,
-    unmatchedMentees,
-    unmatchedMentors
+            resolve({
+              matches,
+              unmatchedMentees,
+              unmatchedMentors
+            });
+          });
+        });
+    });
   });
 }
 

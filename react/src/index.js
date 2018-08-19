@@ -38,46 +38,31 @@ class App extends PureComponent {
 
   async componentDidMount() {
     await this.loadScript();
-    handleClientLoad(
-      this.state.optionsSPMP,
-      ({
+    const { optionsSPMP, optionsMI } = this.state;
+    const [
+      {
         matches: matchesSPMP,
         unmatchedMentees: unmatchedMenteesSPMP,
         unmatchedMentors: unmatchedMentorsSPMP
-      }) => {
-        console.log(matchesSPMP);
-        this.setState({
-          matchesSPMP,
-          unmatchedMenteesSPMP,
-          unmatchedMentorsSPMP
-        });
+      },
+      {
+        matches: matchesMI,
+        unmatchedMentees: unmatchedMenteesMI,
+        unmatchedMentors: unmatchedMentorsMI
       }
-    );
+    ] = await Promise.all([
+      handleClientLoad(optionsSPMP),
+      handleClientLoad(optionsMI)
+    ]);
+    this.setState({
+      matchesMI,
+      matchesSPMP,
+      unmatchedMenteesMI,
+      unmatchedMenteesSPMP,
+      unmatchedMentorsMI,
+      unmatchedMentorsSPMP
+    });
   }
-
-  // async componentDidMount() {
-  //   await this.loadScript();
-  //   const {
-  //     matches: matchesSPMP,
-  //     unmatchedMentees: unmatchedMenteesSPMP,
-  //     unmatchedMentors: unmatchedMentorsSPMP
-  //   } = await handleClientLoad(this.state.optionsSPMP);
-
-  //   const {
-  //     matches: matchesMI,
-  //     unmatchedMentees: unmatchedMenteesMI,
-  //     unmatchedMentors: unmatchedMentorsMI
-  //   } = await handleClientLoad(this.state.optionsMI);
-
-  //   this.setState({
-  //     matchesMI,
-  //     matchesSPMP,
-  //     unmatchedMenteesMI,
-  //     unmatchedMenteesSPMP,
-  //     unmatchedMentorsMI,
-  //     unmatchedMentorsSPMP
-  //   });
-  // }
 
   render() {
     const { matchesMI = [], matchesSPMP = [] } = this.state;
