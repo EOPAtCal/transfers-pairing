@@ -115,7 +115,7 @@ async function getRows(values, selector) {
   return result;
 }
 
-const gapi = window.gapi;
+const gapi = (window.gapi = window.gapi || {});
 let options;
 let matches, unmatchedMentees, unmatchedMentors;
 
@@ -127,31 +127,35 @@ let matches, unmatchedMentees, unmatchedMentors;
 function handleClientLoad(o) {
   return new Promise(resolve => {
     options = o;
-    gapi.load('client:auth2', () => {
-      gapi.client
-        .init({
-          apiKey: API_KEY,
-          clientId: CLIENT_ID,
-          discoveryDocs: DISCOVERY_DOCS,
-          scope: SCOPES
-        })
-        .then(function() {
-          // Listen for sign-in state changes.
-          gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
-          // Handle the initial sign-in state.
-          updateSigninStatus(
-            gapi.auth2.getAuthInstance().isSignedIn.get()
-          ).then(() => {
-            authorizeButton.onclick = handleAuthClick;
-            signoutButton.onclick = handleSignoutClick;
-            resolve({
-              matches,
-              unmatchedMentees,
-              unmatchedMentors
+    if (gapi) {
+      gapi.load('client:auth2', () => {
+        gapi.client
+          .init({
+            apiKey: API_KEY,
+            clientId: CLIENT_ID,
+            discoveryDocs: DISCOVERY_DOCS,
+            scope: SCOPES
+          })
+          .then(function() {
+            // Listen for sign-in state changes.
+            gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+            // Handle the initial sign-in state.
+            updateSigninStatus(
+              gapi.auth2.getAuthInstance().isSignedIn.get()
+            ).then(() => {
+              authorizeButton.onclick = handleAuthClick;
+              signoutButton.onclick = handleSignoutClick;
+              resolve({
+                matches,
+                unmatchedMentees,
+                unmatchedMentors
+              });
             });
           });
-        });
-    });
+      });
+    } else {
+      throw Error(`error loading google API script`);
+    }
   });
 }
 

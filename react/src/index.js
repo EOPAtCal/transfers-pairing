@@ -23,45 +23,48 @@ class App extends PureComponent {
     optionsMI: defaultsMI
   };
 
-  loadScript() {
-    const script = document.createElement('script');
-    script.src = 'https://apis.google.com/js/api.js';
-    script.async = true;
-    document.body.appendChild(script);
-  }
-
   handleChangeOptions(options) {
     this.setState({
       ...options
     });
   }
 
-  async componentDidMount() {
-    await this.loadScript();
+  async fetch() {
     const { optionsSPMP, optionsMI } = this.state;
-    const [
-      {
-        matches: matchesSPMP,
-        unmatchedMentees: unmatchedMenteesSPMP,
-        unmatchedMentors: unmatchedMentorsSPMP
-      },
-      {
-        matches: matchesMI,
-        unmatchedMentees: unmatchedMenteesMI,
-        unmatchedMentors: unmatchedMentorsMI
-      }
-    ] = await Promise.all([
+    return await Promise.all([
       handleClientLoad(optionsSPMP),
       handleClientLoad(optionsMI)
     ]);
-    this.setState({
-      matchesMI,
-      matchesSPMP,
-      unmatchedMenteesMI,
-      unmatchedMenteesSPMP,
-      unmatchedMentorsMI,
-      unmatchedMentorsSPMP
-    });
+  }
+
+  async componentDidMount() {
+    const script = document.createElement('script');
+    script.src = 'https://apis.google.com/js/api.js';
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+    script.onload = async () => {
+      const [
+        {
+          matches: matchesSPMP,
+          unmatchedMentees: unmatchedMenteesSPMP,
+          unmatchedMentors: unmatchedMentorsSPMP
+        },
+        {
+          matches: matchesMI,
+          unmatchedMentees: unmatchedMenteesMI,
+          unmatchedMentors: unmatchedMentorsMI
+        }
+      ] = await this.fetch();
+      this.setState({
+        matchesMI,
+        matchesSPMP,
+        unmatchedMenteesMI,
+        unmatchedMenteesSPMP,
+        unmatchedMentorsMI,
+        unmatchedMentorsSPMP
+      });
+    };
   }
 
   render() {
