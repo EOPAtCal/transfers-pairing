@@ -20,11 +20,11 @@ class App extends PureComponent {
     optionsMI: { key: 'MI', value: defaultsMI }
   };
 
-  handleChangeOptions(key, value) {
+  handleChangeOptions = (key, value) => {
     this.setState({
       [`options${key}`]: { key, value }
     });
-  }
+  };
 
   handleResetAllToDefaults = key => {
     if (window.confirm('Are you sure?')) {
@@ -40,8 +40,8 @@ class App extends PureComponent {
   async fetch() {
     const { optionsSPMP, optionsMI } = this.state;
     return await Promise.all([
-      handleClientLoad(optionsSPMP),
-      handleClientLoad(optionsMI)
+      handleClientLoad(optionsSPMP.value),
+      handleClientLoad(optionsMI.value)
     ]);
   }
 

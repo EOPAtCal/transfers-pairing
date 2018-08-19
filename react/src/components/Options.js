@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 
 class Options extends PureComponent {
-  state = { options: this.props.options.value };
+  state = { ...this.props.options.value };
 
   handleChange = event => {
     const target = event.target;
@@ -14,6 +14,11 @@ class Options extends PureComponent {
   handleSubmit = e => {
     e.preventDefault();
     this.props.handleChangeOptions(this.props.options.key, this.state.options);
+  };
+
+  handleReset = e => {
+    e.preventDefault();
+    this.props.handleResetAllToDefaults(this.props.options.key);
   };
 
   render() {
@@ -251,7 +256,7 @@ class Options extends PureComponent {
             <div className="uk-width-1-2@s">
               <button
                 className="uk-button uk-button-default"
-                onClick={this.handleResetAllToDefaults}
+                onClick={this.handleReset}
               >
                 reset all to defaults
               </button>
