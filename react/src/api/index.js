@@ -155,7 +155,7 @@ let matches, unmatchedMentees, unmatchedMentors;
 /**
  *  On load, called to load the auth2 library and API client library.
  */
-function* handleClientLoad(o) {
+function handleClientLoad(o) {
   options = o;
   gapi.load('client:auth2', initClient);
   return {
@@ -163,6 +163,16 @@ function* handleClientLoad(o) {
     unmatchedMentees,
     unmatchedMentors
   };
+}
+
+function handleClientLoad2(o, callback) {
+  options = o;
+  gapi.load('client:auth2', initClient);
+  callback({
+    matches,
+    unmatchedMentees,
+    unmatchedMentors
+  });
 }
 
 export default handleClientLoad;
