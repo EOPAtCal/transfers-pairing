@@ -37,6 +37,30 @@ class App extends PureComponent {
     }
   };
 
+  handleMatch = async () => {
+    console.log('here');
+    const [
+      {
+        matches: matchesSPMP,
+        unmatchedMentees: unmatchedMenteesSPMP,
+        unmatchedMentors: unmatchedMentorsSPMP
+      },
+      {
+        matches: matchesMI,
+        unmatchedMentees: unmatchedMenteesMI,
+        unmatchedMentors: unmatchedMentorsMI
+      }
+    ] = await this.fetch();
+    this.setState({
+      matchesMI,
+      matchesSPMP,
+      unmatchedMenteesMI,
+      unmatchedMenteesSPMP,
+      unmatchedMentorsMI,
+      unmatchedMentorsSPMP
+    });
+  };
+
   async fetch() {
     const { optionsSPMP, optionsMI } = this.state;
     return await Promise.all([
@@ -112,6 +136,7 @@ class App extends PureComponent {
           <ul className="uk-switcher uk-margin">
             <li>
               <Page
+                handleMatch={this.handleMatch}
                 matches={matchesSPMP}
                 options={optionsSPMP}
                 handleChangeOptions={this.handleChangeOptions}
@@ -120,6 +145,7 @@ class App extends PureComponent {
             </li>
             <li>
               <Page
+                handleMatch={this.handleMatch}
                 matches={matchesMI}
                 options={optionsMI}
                 handleChangeOptions={this.handleChangeOptions}

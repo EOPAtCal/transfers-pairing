@@ -235,6 +235,7 @@ class Options extends PureComponent {
                   type="checkbox"
                   checked={matchByMajors}
                   onChange={this.handleChange}
+                  disabled
                 />
                 match by majors
               </label>
@@ -247,6 +248,7 @@ class Options extends PureComponent {
                   type="checkbox"
                   checked={matchByColleges}
                   onChange={this.handleChange}
+                  disabled
                 />
                 match by colleges
               </label>

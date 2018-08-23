@@ -6,7 +6,8 @@ const Page = ({
   matches,
   options,
   handleChangeOptions,
-  handleResetAllToDefaults
+  handleResetAllToDefaults,
+  handleMatch
 }) => (
   <div className="uk-container">
     <div>
@@ -22,6 +23,7 @@ const Page = ({
       <ul className="uk-switcher uk-margin">
         <li>
           <Main
+            handleMatch={handleMatch}
             matches={matches}
             handleChangeOptions={handleChangeOptions}
             handleResetAllToDefaults={handleResetAllToDefaults}

@@ -1,9 +1,12 @@
 import React from 'react';
 
-const Main = ({ matches }) => (
+const Main = ({ matches, handleMatch }) => (
   <div>
     <div className="uk-margin uk-text-center">
-      <button className="uk-button uk-button-danger uk-button-large uk-text-large">
+      <button
+        onClick={handleMatch}
+        className="uk-button uk-button-danger uk-button-large uk-text-large"
+      >
         Match!
       </button>
     </div>
