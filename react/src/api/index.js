@@ -57,6 +57,7 @@ function selectMentor(user) {
       email: user[options.mentorEmail],
       college: user[options.mentorCollege],
       major: user[options.mentorMajor],
+      limit: user[options.mentorLimit],
       get id() {
         return this.email;
       }

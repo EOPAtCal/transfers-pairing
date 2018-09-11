@@ -44,7 +44,7 @@ function setup(matches, mentors) {
   mentors.forEach(mentor => {
     matches[mentor.id] = {
       mentees: [],
-      maxMenteesSize: mentor.max,
+      maxMenteesSize: mentor.mentorLimit,
       reasons: []
     };
   });

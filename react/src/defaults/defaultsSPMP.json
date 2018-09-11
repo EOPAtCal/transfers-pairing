@@ -1,14 +1,15 @@
 {
-  "mentorSpreadsheetId": "18zmzgEI6DzS-r_GRr9SuE5OSk6fIE2RWuJb7AJv8AgE",
-  "mentorRange": "A2:I47",
-  "mentorEmail": 2,
-  "mentorCollege": 5,
-  "mentorMajor": 4,
+  "mentorSpreadsheetId": "1BRs3GAmGsz7ehTc7l6fkzmB7klSvDqcpvZGYBlGYnMQ",
+  "mentorRange": "A2:U61",
+  "mentorEmail": 3,
+  "mentorCollege": 4,
+  "mentorMajor": 19,
+  "mentorLimit": 20,
   "matchByMajors": true,
-  "matchByColleges": true,
-  "menteeSpreadsheetId": "1hYJI9U5R4e1-bOhSdNowPPk-cskxrIX4p3Cqtk29II0",
-  "menteeRange": "A2:AI376",
-  "menteeEmail": 9,
-  "menteeCollege": 11,
-  "menteeMajor": 13
+  "matchByColleges": false,
+  "menteeSpreadsheetId": "1hRQ5v0pao0zh_LSH3zY9LgsSooDyaVjTaxO7cMOR56g",
+  "menteeRange": "A2:AC351",
+  "menteeEmail": 8,
+  "menteeCollege": 9,
+  "menteeMajor": 29
 }
